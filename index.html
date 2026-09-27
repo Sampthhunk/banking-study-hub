@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏦 Banking Study Hub – Sampath Kumar</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);min-height:100vh;color:#fff;padding:20px}
+.container{max-width:900px;margin:0 auto}
+.header{text-align:center;padding:30px 20px;background:rgba(255,255,255,.05);border-radius:20px;margin-bottom:30px;border:1px solid rgba(255,255,255,.1)}
+.header h1{font-size:2em;background:linear-gradient(90deg,#f7971e,#ffd200);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header p{color:#aaa;margin-top:8px;font-size:1em}
+.header .sub{color:#888;font-size:.85em;margin-top:5px}
+.stats-row{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin:25px 0}
+.stat-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:15px 25px;text-align:center;min-width:120px}
+.stat-card .num{font-size:1.8em;font-weight:700;background:linear-gradient(90deg,#f7971e,#ffd200);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-card .label{color:#aaa;font-size:.8em;margin-top:4px}
+.section{margin-bottom:30px}
+.section-title{font-size:1.3em;margin-bottom:15px;padding-left:10px;border-left:4px solid #f7971e;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.section-title span{flex:1}
+.edit-btn{background:none;border:1px solid rgba(255,255,255,.2);color:#aaa;font-size:.6em;padding:4px 10px;border-radius:8px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.edit-btn:hover{background:rgba(255,255,255,.1);color:#ffd200;border-color:#ffd200}
+.edit-input{background:rgba(255,255,255,.1);border:2px solid #f7971e;color:#fff;font-size:.85em;padding:6px 12px;border-radius:8px;flex:1;min-width:200px;outline:none}
+.edit-save{background:linear-gradient(90deg,#f7971e,#ffd200);color:#000;border:none;padding:5px 14px;border-radius:8px;cursor:pointer;font-size:.7em;font-weight:600}
+.edit-cancel{background:rgba(255,255,255,.1);color:#ccc;border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:8px;cursor:pointer;font-size:.7em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:15px}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;transition:all .3s;cursor:pointer;text-decoration:none;color:#fff;display:block}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(247,151,30,.15);border-color:rgba(255,255,255,.25)}
+.card .icon{font-size:2em;margin-bottom:10px}
+.card .title{font-size:1.05em;font-weight:600;margin-bottom:6px}
+.card .desc{color:#aaa;font-size:.82em;line-height:1.4}
+.card .tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.7em;font-weight:600;margin-top:8px}
+.tag-pdf{background:rgba(255,23,68,.15);color:#ff5252}
+.tag-budget{background:rgba(247,151,30,.15);color:#ffd200}
+.tag-gst{background:rgba(0,200,83,.15);color:#69f0ae}
+.tag-rbi{background:rgba(0,210,255,.15);color:#00d2ff}
+.tag-psb{background:rgba(245,175,25,.15);color:#f5af19}
+.tag-pay{background:rgba(245,98,23,.15);color:#f56217}
+.tag-terms{background:rgba(102,126,234,.15);color:#667eea}
+.tag-inst{background:rgba(248,181,0,.15);color:#f8b500}
+.tag-intl{background:rgba(153,242,200,.15);color:#99f2c8}
+.tag-final{background:rgba(255,65,108,.15);color:#ff416c}
+.tag-grand{background:linear-gradient(90deg,rgba(247,151,30,.2),rgba(255,210,0,.2));color:#ffd200;border:1px solid rgba(247,151,30,.3)}
+.footer{text-align:center;padding:20px;color:#555;font-size:.8em;margin-top:30px}
+.divider{height:1px;background:rgba(255,255,255,.08);margin:10px 0 25px}
+.grand-card{background:linear-gradient(135deg,rgba(247,151,30,.1),rgba(255,210,0,.05));border:2px solid rgba(247,151,30,.3)}
+.grand-card:hover{box-shadow:0 8px 40px rgba(247,151,30,.25);border-color:rgba(247,151,30,.5)}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,200,83,.9);color:#fff;padding:10px 25px;border-radius:10px;font-size:.9em;display:none;z-index:999;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>🏦 Banking Study Hub</h1>
+<p>IBPS / SBI / RRB Mains 2026 – Static Banking Awareness</p>
+<p class="sub">By Sampath Kumar • All-in-One Dashboard</p>
+</div>
+
+<div class="stats-row">
+<div class="stat-card"><div class="num">477</div><div class="label">Total MCQs</div></div>
+<div class="stat-card"><div class="num">17</div><div class="label">Mock Tests</div></div>
+<div class="stat-card"><div class="num">2</div><div class="label">Study PDFs</div></div>
+<div class="stat-card"><div class="num">6</div><div class="label">Features</div></div>
+</div>
+
+<!-- GRAND TEST -->
+<div class="section">
+<div class="section-title" id="sec-grand">
+<span>🎯 Grand Test (All Features)</span>
+<button class="edit-btn" onclick="startEdit('sec-grand')">✏️ Rename</button>
+</div>
+<div class="grid">
+<a class="card grand-card" href="Grand_Test.html">
+<div class="icon">🎯</div>
+<div class="title">Grand Test – All-in-One</div>
+<div class="desc">150 MCQs • 30 random per test • New questions every retest! Includes: 🔀 Shuffle • 📑 Topic Filter • 🔄 Revision • 🔖 Bookmarks • 🏆 Leaderboard</div>
+<span class="tag tag-grand">⭐ ALL FEATURES</span>
+</a>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- STUDY MATERIAL PDFs -->
+<div class="section">
+<div class="section-title" id="sec-study">
+<span>📚 Study Material (PDFs)</span>
+<button class="edit-btn" onclick="startEdit('sec-study')">✏️ Rename</button>
+</div>
+<div class="grid">
+<a class="card" href="static_banking_awareness_2026.pdf" target="_blank">
+<div class="icon">📄</div>
+<div class="title">Static Banking Awareness 2026</div>
+<div class="desc">Complete 13-section study material – RBI, GST, PSBs, Schemes, Acts, First Persons & more</div>
+<span class="tag tag-pdf">PDF DOWNLOAD</span>
+</a>
+<a class="card" href="Static_Mock_Test_YouTube_Complete_Edition_CORRECTED.pdf" target="_blank">
+<div class="icon">📋</div>
+<div class="title">YouTube MCQ PDF (307 Qs – Corrected)</div>
+<div class="desc">All 307 MCQs with answers, explanations & 6 corrections applied</div>
+<span class="tag tag-pdf">PDF DOWNLOAD</span>
+</a>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SET A -->
+<div class="section">
+<div class="section-title" id="sec-seta">
+<span>📝 Set A – From Study Material (170 MCQs × 6 Tests)</span>
+<button class="edit-btn" onclick="startEdit('sec-seta')">✏️ Rename</button>
+</div>
+<div class="grid">
+<a class="card" href="Test_A1_RBI.html">
+<div class="icon">🏦</div>
+<div class="title" id="card-a1">A1 – RBI Basics & Governors</div>
+<div class="desc">30 MCQs • RBI history, establishment, governors, functions</div>
+<span class="tag tag-rbi">RBI</span>
+</a>
+<a class="card" href="Test_A2_Rates_PSB.html">
+<div class="icon">📊</div>
+<div class="title" id="card-a2">A2 – RBI Rates & PSBs</div>
+<div class="desc">30 MCQs • Repo, CRR, SLR, bank mergers, nationalization</div>
+<span class="tag tag-psb">RATES & PSB</span>
+</a>
+<a class="card" href="Test_A3_Financial.html">
+<div class="icon">🏢</div>
+<div class="title" id="card-a3">A3 – Financial Institutions</div>
+<div class="desc">30 MCQs • NABARD, SIDBI, SEBI, IRDAI, EXIM Bank</div>
+<span class="tag tag-inst">INSTITUTIONS</span>
+</a>
+<a class="card" href="Test_A4_Payments.html">
+<div class="icon">💳</div>
+<div class="title" id="card-a4">A4 – Payment Systems & Banking Terms</div>
+<div class="desc">30 MCQs • NEFT, RTGS, UPI, IMPS, NPA, KYC</div>
+<span class="tag tag-pay">PAYMENTS</span>
+</a>
+<a class="card" href="Test_A5_Schemes.html">
+<div class="icon">🏛️</div>
+<div class="title" id="card-a5">A5 – Govt Schemes & Acts</div>
+<div class="desc">30 MCQs • PMJDY, MUDRA, APY, SARFAESI, IBC</div>
+<span class="tag tag-intl">SCHEMES</span>
+</a>
+<a class="card" href="Test_A6_Mixed.html">
+<div class="icon">🎯</div>
+<div class="title" id="card-a6">A6 – Mixed Final (20 MCQs)</div>
+<div class="desc">20 MCQs • GST 2.0, First Persons, Important Dates</div>
+<span class="tag tag-final">MIXED</span>
+</a>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SET B -->
+<div class="section">
+<div class="section-title" id="sec-setb">
+<span>🎬 Set B – From YouTube Screenshots (307 MCQs × 10 Tests)</span>
+<button class="edit-btn" onclick="startEdit('sec-setb')">✏️ Rename</button>
+</div>
+<div class="grid">
+<a class="card" href="Test_B1_Budget.html">
+<div class="icon">📋</div>
+<div class="title" id="card-b1">B1 – Budget Basics & History</div>
+<div class="desc">30 MCQs • Article 112, Finance Ministers, ZBB, budget history</div>
+<span class="tag tag-budget">BUDGET</span>
+</a>
+<a class="card" href="Test_B2_GST.html">
+<div class="icon">🧾</div>
+<div class="title" id="card-b2">B2 – Budget Tail + GST Fundamentals</div>
+<div class="desc">30 MCQs • GST basics, rates, Council, GSTIN</div>
+<span class="tag tag-gst">GST</span>
+</a>
+<a class="card" href="Test_B3_GST2.html">
+<div class="icon">🔄</div>
+<div class="title" id="card-b3">B3 – GST Advanced + GST 2.0</div>
+<div class="desc">30 MCQs • GST 2.0 reforms, new slabs, ITC, returns</div>
+<span class="tag tag-gst">GST 2.0</span>
+</a>
+<a class="card" href="Test_B4_RBI.html">
+<div class="icon">🏦</div>
+<div class="title" id="card-b4">B4 – RBI: History, Governors & Rates</div>
+<div class="desc">30 MCQs • RBI establishment, governors, repo rate, MCLR</div>
+<span class="tag tag-rbi">RBI</span>
+</a>
+<a class="card" href="Test_B5_PSB.html">
+<div class="icon">🏛️</div>
+<div class="title" id="card-b5">B5 – PSBs, Mergers & Nationalization</div>
+<div class="desc">30 MCQs • Bank mergers, taglines, nationalization waves</div>
+<span class="tag tag-psb">PSBs</span>
+</a>
+<a class="card" href="Test_B6_Payments.html">
+<div class="icon">💳</div>
+<div class="title" id="card-b6">B6 – Payment Systems</div>
+<div class="desc">30 MCQs • NEFT, RTGS, IMPS, UPI, SWIFT, IFSC, CTS</div>
+<span class="tag tag-pay">PAYMENTS</span>
+</a>
+<a class="card" href="Test_B7_Terms.html">
+<div class="icon">🔐</div>
+<div class="title" id="card-b7">B7 – Banking Terms, NPA & Security</div>
+<div class="desc">30 MCQs • NPA, KYC, CBS, skimming, collateral</div>
+<span class="tag tag-terms">TERMS</span>
+</a>
+<a class="card" href="Test_B8_Institutions.html">
+<div class="icon">🏢</div>
+<div class="title" id="card-b8">B8 – Financial Institutions</div>
+<div class="desc">30 MCQs • SEBI, IRDAI, NABARD, SIDBI, PPF, SIP</div>
+<span class="tag tag-inst">INSTITUTIONS</span>
+</a>
+<a class="card" href="Test_B9_Schemes.html">
+<div class="icon">🌍</div>
+<div class="title" id="card-b9">B9 – International Orgs & Schemes</div>
+<div class="desc">30 MCQs • IMF, World Bank, FEMA, PMJDY, MUDRA, APY</div>
+<span class="tag tag-intl">INTERNATIONAL</span>
+</a>
+<a class="card" href="Test_B10_Final.html">
+<div class="icon">🏆</div>
+<div class="title" id="card-b10">B10 – Final Round Mixed</div>
+<div class="desc">37 MCQs • Mixed from all topics – the ultimate test!</div>
+<span class="tag tag-final">FINAL</span>
+</a>
+</div>
+</div>
+
+<div class="footer">
+🏦 Banking Study Hub • IBPS/SBI/RRB Mains 2026 • Sampath Kumar<br>
+📊 17 Tests | 477 MCQs | 📄 2 PDFs | 6 Features | Built with ❤️
+</div>
+
+</div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">✅ Name saved!</div>
+
+<script>
+// Load saved names from localStorage
+function loadNames(){
+  const saved = JSON.parse(localStorage.getItem("dashNames") || "{}");
+  for(let id in saved){
+    const el = document.getElementById(id);
+    if(el){
+      const span = el.querySelector("span");
+      if(span) span.textContent = saved[id];
+      else el.textContent = saved[id];
+    }
+  }
+}
+
+// Start editing a section title
+function startEdit(id){
+  const el = document.getElementById(id);
+  const span = el.querySelector("span");
+  const currentText = span.textContent;
+  
+  el.innerHTML = `
+    <input class="edit-input" id="inp-${id}" value="${currentText}" onkeydown="if(event.key==='Enter')saveEdit('${id}')">
+    <button class="edit-save" onclick="saveEdit('${id}')">✅ Save</button>
+    <button class="edit-cancel" onclick="cancelEdit('${id}','${encodeURIComponent(currentText)}')">❌</button>
+  `;
+  document.getElementById("inp-"+id).focus();
+  document.getElementById("inp-"+id).select();
+}
+
+// Save the edited name
+function saveEdit(id){
+  const inp = document.getElementById("inp-"+id);
+  const newName = inp.value.trim();
+  if(!newName) return;
+  
+  // Save to localStorage
+  const saved = JSON.parse(localStorage.getItem("dashNames") || "{}");
+  saved[id] = newName;
+  localStorage.setItem("dashNames", JSON.stringify(saved));
+  
+  // Update UI
+  const el = document.getElementById(id);
+  el.innerHTML = `<span>${newName}</span><button class="edit-btn" onclick="startEdit('${id}')">✏️ Rename</button>`;
+  
+  showToast("✅ Renamed successfully!");
+}
+
+// Cancel editing
+function cancelEdit(id, originalEncoded){
+  const original = decodeURIComponent(originalEncoded);
+  const el = document.getElementById(id);
+  el.innerHTML = `<span>${original}</span><button class="edit-btn" onclick="startEdit('${id}')">✏️ Rename</button>`;
+}
+
+// Toast notification
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.style.display = "block";
+  setTimeout(()=>{ t.style.display = "none"; }, 2000);
+}
+
+// Load saved names on page load
+loadNames();
+</script>
+</body>
+</html>
+

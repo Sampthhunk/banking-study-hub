@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test B3 – GST Advanced + GST 2.0</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#11998e,#38ef7d);min-height:100vh;color:#fff;padding:20px}
+.container{max-width:750px;margin:0 auto}
+.header{text-align:center;padding:20px;background:rgba(0,0,0,.35);border-radius:16px;margin-bottom:20px;border:1px solid rgba(255,255,255,.15)}
+.header h1{font-size:1.5em;background:linear-gradient(90deg,#38ef7d,#11998e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header p{color:#ccc;margin-top:5px;font-size:.9em}
+.progress-container{background:rgba(0,0,0,.2);border-radius:20px;height:10px;margin:20px 0;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,#38ef7d,#11998e);border-radius:20px;transition:width .4s}
+.stats{display:flex;justify-content:space-between;font-size:.85em;color:#ddd;margin-bottom:15px}
+.card{background:rgba(0,0,0,.3);border-radius:16px;padding:25px;border:1px solid rgba(255,255,255,.1);margin-bottom:20px}
+.q-num{font-size:.8em;color:#38ef7d;font-weight:700;margin-bottom:8px}
+.q-text{font-size:1.05em;line-height:1.5;margin-bottom:20px}
+.option{display:block;width:100%;padding:14px 18px;margin:8px 0;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;font-size:.95em;cursor:pointer;text-align:left;transition:all .2s}
+.option:hover:not(.disabled){background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+.option.correct{background:rgba(0,200,83,.2);border-color:#00c853;color:#69f0ae}
+.option.wrong{background:rgba(255,23,68,.2);border-color:#ff1744;color:#ff5252}
+.option.disabled{cursor:default;opacity:.7}
+.explanation{margin-top:15px;padding:15px;background:rgba(255,215,0,.08);border-left:3px solid #ffd200;border-radius:0 8px 8px 0;font-size:.9em;color:#eee;display:none}
+.btn-row{display:flex;gap:10px;justify-content:center;margin-top:15px}
+.btn{padding:12px 30px;border:none;border-radius:10px;font-size:.95em;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-next{background:linear-gradient(90deg,#11998e,#38ef7d);color:#000}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(56,239,125,.4)}
+.result-card{text-align:center;padding:40px}
+.score-circle{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:20px auto;font-size:2em;font-weight:700}
+.score-good{background:rgba(0,200,83,.15);border:3px solid #00c853;color:#69f0ae}
+.score-avg{background:rgba(255,215,0,.15);border:3px solid #ffd200;color:#ffd200}
+.score-low{background:rgba(255,23,68,.15);border:3px solid #ff1744;color:#ff5252}
+.result-table{width:100%;margin-top:25px;border-collapse:collapse;font-size:.85em}
+.result-table th{padding:10px;background:rgba(255,255,255,.1);text-align:left}
+.result-table td{padding:8px 10px}
+.review-q{padding:15px;margin:10px 0;border-radius:10px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.1)}
+.review-q.r-correct{border-left:4px solid #00c853}
+.review-q.r-wrong{border-left:4px solid #ff1744}
+.hidden{display:none}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7em;font-weight:600;margin:2px}
+.tag-g{background:rgba(0,200,83,.2);color:#69f0ae}
+.tag-g2{background:rgba(255,215,0,.2);color:#ffd200}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>🔄 Test B3 – GST Advanced + GST 2.0 Reforms</h1>
+<p>Set B (Re-Split) • Q61–Q90 of 307 • IBPS/SBI/RRB Mains 2026</p>
+<p><span class="tag tag-g">GST</span> <span class="tag tag-g2">GST 2.0</span></p>
+</div>
+<div id="quiz-area">
+<div class="progress-container"><div class="progress-bar" id="pbar" style="width:0%"></div></div>
+<div class="stats"><span id="qcount">Question 1 / 30</span><span id="scorecount">Score: 0</span></div>
+<div class="card" id="qcard"></div>
+<div class="btn-row"><button class="btn btn-next hidden" id="nextBtn" onclick="nextQ()">Next →</button></div>
+</div>
+<div id="result-area" class="hidden"></div>
+</div>
+<script>
+const Q=[
+{q:"What is the maximum rate prescribed under CGST/SGST?",o:["14%","18%","20%","28%"],a:3,e:"Maximum CGST or SGST rate is 28%."},
+{q:"Under which Article is the GST Council constituted?",o:["Article 246A","Article 269A","Article 279A","Article 289A"],a:2,e:"Article 279A provides for the constitution of the GST Council."},
+{q:"What taxes are levied on intra-state supply under GST?",o:["CGST only","SGST only","CGST and SGST","IGST"],a:2,e:"Intra-state supply attracts both CGST and SGST."},
+{q:"Which tax is levied on import of goods and services?",o:["SGST","IGST","CGST","Exempt"],a:1,e:"IGST is levied on imports (treated as inter-state supply)."},
+{q:"Which form is used for new GST registration?",o:["Form GSTR-1A","Form GST REG","Form GSTR-2","Form GST REG-01"],a:3,e:"Form GST REG-01 is used for new GST registration."},
+{q:"When does GST 2.0 become effective?",o:["September 3, 2025","September 22, 2025","January 1, 2026","April 1, 2026"],a:1,e:"GST 2.0 became effective on 22 September 2025."},
+{q:"What is the new slab structure under GST 2.0?",o:["0%, 5%, 12%, 28%","0%, 8%, 16%, 28%","0%, 5%, 18%, 40%","0%, 10%, 20%, 30%"],a:2,e:"GST 2.0 simplified slabs to: 0%, 5%, 18%, and 40%."},
+{q:"Which GST slabs have been removed in GST 2.0?",o:["5% and 18%","12% and 28%","0% and 18%","18% and 40%"],a:1,e:"The 12% and 28% slabs were removed in GST 2.0."},
+{q:"What is the proposed GST rate for demerit/sin goods under GST 2.0?",o:["28%","30%","35%","40%"],a:3,e:"Demerit/sin goods (tobacco, aerated drinks) attract 40% GST."},
+{q:"GST 2.0 reforms aim primarily at:",o:["Increasing government revenue","Reducing corporate tax","Simplifying the GST slab structure","Replacing GST with a new tax"],a:2,e:"GST 2.0 primarily simplifies the GST slab structure."},
+{q:"Which category gets zero GST (0%) under GST 2.0?",o:["Electronics","Essential goods like milk, bread, fruits","Fuel and petroleum","Luxury cars"],a:1,e:"Essential goods (milk, bread, fruits) remain at 0%."},
+{q:"What is the expected revenue impact of GST 2.0?",o:["Large revenue loss","Large revenue gain","Revenue neutral","No impact"],a:2,e:"GST 2.0 is designed to be revenue neutral."},
+{q:"The GST Council approved GST 2.0 reforms during its:",o:["54th meeting","55th meeting","56th meeting","57th meeting"],a:1,e:"The 55th GST Council meeting approved GST 2.0 reforms."},
+{q:"Which statement about GST 2.0 is FALSE?",o:["GST 2.0 simplifies the slab structure","GST 2.0 merges 12% and 28% slabs","Zero GST continues for essentials","Exports will now be taxed at 5%"],a:3,e:"FALSE: Exports remain zero-rated (not taxed at 5%)."},
+{q:"Under GST 2.0, what rate applies to tobacco, cigarettes, and aerated drinks?",o:["18%","28%","35%","40%"],a:3,e:"Sin goods including tobacco attract 40% under GST 2.0."},
+{q:"Under GST 2.0, which category of goods attracts 5% GST?",o:["Luxury items","Medical/health items, dairy products, basic necessities","Electronics","Tobacco products"],a:1,e:"Medical items, dairy products, and basic necessities fall under 5%."},
+{q:"What GST rate applies to electronics, cars, and standard goods under GST 2.0?",o:["5%","12%","18%","28%"],a:2,e:"Electronics, cars, and standard goods attract 18% GST."},
+{q:"GST 2.0 was introduced under which body's recommendation?",o:["Parliament of India","Finance Commission","GST Council","NITI Aayog"],a:2,e:"GST 2.0 was recommended by the GST Council."},
+{q:"What type of tax is GST?",o:["Value Added Tax","Indirect Tax","Direct Tax","Income Tax"],a:1,e:"GST is an Indirect Tax."},
+{q:"Which of the following is NOT a standard rate of GST (pre-GST 2.0)?",o:["3%","5%","12%","18%"],a:0,e:"3% is not a standard GST rate. Standard rates are 0%, 5%, 12%, 18%, 28%."},
+{q:"Input Tax Credit means:",o:["Tax Deposited","Tax Collected on Sales","Tax Paid on Purchase","None of these"],a:2,e:"ITC refers to the tax paid on purchases (claimed as credit)."},
+{q:"Under GST, which article provides for the distribution of IGST?",o:["Article 246A","Article 269A","Article 279A","Article 289A"],a:1,e:"Article 269A provides for IGST distribution."},
+{q:"GST comes under which category in the government budget?",o:["Indirect tax","Non-tax revenue","Direct tax","Income tax"],a:0,e:"GST is classified as an indirect tax."},
+{q:"When was GST first proposed in India?",o:["1993","1996","1999","2000"],a:3,e:"GST was first proposed in 2000 by the Kelkar Task Force."},
+{q:"What is the minimum threshold limit for GST registration (regular scheme)?",o:["1 Crore","1.2 Crore","1.5 Crore","1.7 Crore"],a:1,e:"GST registration threshold is ₹1.2 Crore under regular scheme."},
+{q:"Which portal is used for GST Return Filing?",o:["www.gst.com","www.gsttax.in","www.gst.gov.in","www.gst.gov.com"],a:2,e:"GST returns are filed at www.gst.gov.in."},
+{q:"Which return form is filled by a Composite Taxpayer under GST?",o:["CMP-08","GSTR-1","GSTR-2","GSTR-3B"],a:0,e:"Composite taxpayers file Form CMP-08."},
+{q:"Cut-off date for filing GSTR-3B is:",o:["10th of next month","15th of next month","20th of next month","25th of next month"],a:2,e:"GSTR-3B must be filed by the 20th of the following month."},
+{q:"Which return is filed for paying GST tax liability?",o:["GSTR-1","GSTR-2A","GSTR-2B","GSTR-3B"],a:3,e:"GSTR-3B is used for declaring and paying GST tax liability."},
+{q:"Documents demanded under GST must be provided within:",o:["5 working days","15 working days","20 working days","45 working days"],a:1,e:"Documents must be provided within 15 working days."}
+];
+let ci=0,score=0,answered=[];
+function render(){const q=Q[ci];document.getElementById("pbar").style.width=((ci/Q.length)*100)+"%";document.getElementById("qcount").textContent=`Question ${ci+1} / ${Q.length}`;document.getElementById("scorecount").textContent=`Score: ${score}`;let h=`<div class="q-num">Q${ci+1} of ${Q.length}</div><div class="q-text">${q.q}</div>`;q.o.forEach((o,i)=>{h+=`<button class="option" onclick="pick(${i})" id="opt${i}">${String.fromCharCode(65+i)}) ${o}</button>`;});h+=`<div class="explanation" id="expl">💡 ${q.e}</div>`;document.getElementById("qcard").innerHTML=h;document.getElementById("nextBtn").classList.add("hidden");}
+function pick(i){if(document.querySelector(".option.disabled"))return;const q=Q[ci];document.querySelectorAll(".option").forEach((b,j)=>{b.classList.add("disabled");if(j===q.a)b.classList.add("correct");if(j===i&&i!==q.a)b.classList.add("wrong");});if(i===q.a)score++;answered.push({qi:ci,sel:i,correct:i===q.a});document.getElementById("expl").style.display="block";document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("scorecount").textContent=`Score: ${score}`;}
+function nextQ(){ci++;if(ci>=Q.length){showResult();return;}render();}
+function showResult(){document.getElementById("quiz-area").classList.add("hidden");const pct=Math.round((score/Q.length)*100);let cls=pct>=80?"score-good":pct>=50?"score-avg":"score-low";let grade=pct>=80?"🏆 Expert":pct>=65?"👍 Intermediate":pct>=50?"📘 Beginner":"🔄 Retry";let h=`<div class="card result-card"><h2>Test B3 Complete!</h2><div class="score-circle ${cls}">${pct}%</div><p style="font-size:1.2em">${score} / ${Q.length} correct</p><p style="color:#ccc;margin:10px 0">${grade} Level</p><table class="result-table"><tr><th>Metric</th><th>Value</th></tr><tr><td>✅ Correct</td><td>${score}</td></tr><tr><td>❌ Wrong</td><td>${Q.length-score}</td></tr><tr><td>📊 Accuracy</td><td>${pct}%</td></tr></table></div><h3 style="margin:20px 0 10px">📝 Full Review</h3>`;answered.forEach((a,i)=>{const q=Q[a.qi];h+=`<div class="review-q ${a.correct?'r-correct':'r-wrong'}"><strong>Q${i+1}.</strong> ${q.q}<br><span style="color:${a.correct?'#69f0ae':'#ff5252'}">Your answer: ${String.fromCharCode(65+a.sel)}) ${q.o[a.sel]}</span>`;if(!a.correct)h+=`<br><span style="color:#69f0ae">✅ Correct: ${String.fromCharCode(65+q.a)}) ${q.o[q.a]}</span>`;h+=`<br><small style="color:#ccc">💡 ${q.e}</small></div>`;});h+=`<div class="btn-row" style="margin:30px 0"><button class="btn btn-next" onclick="location.reload()">🔄 Retry Test</button></div>`;document.getElementById("result-area").innerHTML=h;document.getElementById("result-area").classList.remove("hidden");}
+render();
+</script>
+</body>
+</html>
+
