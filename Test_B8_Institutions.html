@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test B8 – Financial Institutions</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#434343,#000000);min-height:100vh;color:#fff;padding:20px}.container{max-width:750px;margin:0 auto}.header{text-align:center;padding:20px;background:rgba(255,255,255,.05);border-radius:16px;margin-bottom:20px;border:1px solid rgba(255,255,255,.1)}.header h1{font-size:1.4em;background:linear-gradient(90deg,#fceabb,#f8b500);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.header p{color:#aaa;margin-top:5px;font-size:.9em}.progress-container{background:rgba(255,255,255,.1);border-radius:20px;height:10px;margin:20px 0;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(90deg,#fceabb,#f8b500);border-radius:20px;transition:width .4s}.stats{display:flex;justify-content:space-between;font-size:.85em;color:#ccc;margin-bottom:15px}.card{background:rgba(255,255,255,.05);border-radius:16px;padding:25px;border:1px solid rgba(255,255,255,.1);margin-bottom:20px}.q-num{font-size:.8em;color:#f8b500;font-weight:700;margin-bottom:8px}.q-text{font-size:1.05em;line-height:1.5;margin-bottom:20px}.option{display:block;width:100%;padding:14px 18px;margin:8px 0;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;font-size:.95em;cursor:pointer;text-align:left;transition:all .2s}.option:hover:not(.disabled){background:rgba(255,255,255,.12)}.option.correct{background:rgba(0,200,83,.15);border-color:#00c853;color:#69f0ae}.option.wrong{background:rgba(255,23,68,.15);border-color:#ff1744;color:#ff5252}.option.disabled{cursor:default;opacity:.7}.explanation{margin-top:15px;padding:15px;background:rgba(255,215,0,.08);border-left:3px solid #ffd200;border-radius:0 8px 8px 0;font-size:.9em;color:#ddd;display:none}.btn-row{display:flex;gap:10px;justify-content:center;margin-top:15px}.btn{padding:12px 30px;border:none;border-radius:10px;font-size:.95em;font-weight:600;cursor:pointer}.btn-next{background:linear-gradient(90deg,#fceabb,#f8b500);color:#000}.result-card{text-align:center;padding:40px}.score-circle{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:20px auto;font-size:2em;font-weight:700}.score-good{background:rgba(0,200,83,.15);border:3px solid #00c853;color:#69f0ae}.score-avg{background:rgba(255,215,0,.15);border:3px solid #ffd200;color:#ffd200}.score-low{background:rgba(255,23,68,.15);border:3px solid #ff1744;color:#ff5252}.result-table{width:100%;margin-top:25px;border-collapse:collapse;font-size:.85em}.result-table th{padding:10px;background:rgba(255,255,255,.1);text-align:left}.result-table td{padding:8px 10px}.review-q{padding:15px;margin:10px 0;border-radius:10px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.1)}.review-q.r-correct{border-left:4px solid #00c853}.review-q.r-wrong{border-left:4px solid #ff1744}.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header"><h1>🏢 Test B8 – Financial Institutions & Regulators</h1><p>Set B • Q211–Q240 of 307</p></div>
+<div id="quiz-area">
+<div class="progress-container"><div class="progress-bar" id="pbar" style="width:0%"></div></div>
+<div class="stats"><span id="qcount">Q 1/30</span><span id="scorecount">Score: 0</span></div>
+<div class="card" id="qcard"></div>
+<div class="btn-row"><button class="btn btn-next hidden" id="nextBtn" onclick="nextQ()">Next →</button></div>
+</div>
+<div id="result-area" class="hidden"></div>
+</div>
+<script>
+const Q=[
+{q:"SEBI became statutory body in:",o:["1988","1990","1992","1995"],a:2,e:"SEBI became statutory on 12 April 1992."},
+{q:"SEBI regulates:",o:["Insurance","Banking","Capital/securities markets","Pension funds"],a:2,e:"SEBI regulates capital and securities markets."},
+{q:"IRDAI stands for:",o:["Insurance Regulatory and Development Authority of India","Indian Regulatory and Development Authority of Insurance","Insurance Regulation and Distribution Authority of India","Indian Reserve and Development Authority of India"],a:0,e:"IRDAI = Insurance Regulatory and Development Authority of India."},
+{q:"IRDAI is headquartered in:",o:["Mumbai","New Delhi","Hyderabad","Chennai"],a:2,e:"IRDAI HQ is in Hyderabad."},
+{q:"Which body supervises insurance in India?",o:["RBI","SEBI","IRDAI","NPCI"],a:2,e:"IRDAI supervises the insurance sector."},
+{q:"NABARD was established in:",o:["1975","1980","1982","1985"],a:2,e:"NABARD established 12 July 1982."},
+{q:"NABARD's primary focus:",o:["Industrial development","Agriculture and rural development","Insurance regulation","Stock market"],a:1,e:"NABARD focuses on agriculture and rural development."},
+{q:"NABARD is classified as a:",o:["Commercial bank","Development bank","Cooperative bank","Foreign bank"],a:1,e:"NABARD is a development bank."},
+{q:"SIDBI was established in:",o:["1988","1990","1992","1995"],a:1,e:"SIDBI established 2 April 1990."},
+{q:"SIDBI stands for:",o:["Small Industries Development Bank of India","Small Investment Development Bank of India","Standard Industries Development Bank of India","Small Industries Deposit Bank of India"],a:0,e:"SIDBI = Small Industries Development Bank of India."},
+{q:"MUDRA is a subsidiary of:",o:["RBI","SBI","SIDBI","NABARD"],a:2,e:"MUDRA is a subsidiary of SIDBI."},
+{q:"EXIM Bank was established in:",o:["1 Jan 1982","12 July 1982","2 April 1990","1 Jan 1992"],a:0,e:"EXIM Bank = 1 January 1982."},
+{q:"LIC was established in:",o:["1950","1952","1956","1960"],a:2,e:"LIC established in 1956."},
+{q:"Primary function of commercial banks:",o:["Printing currency","Accepting deposits and lending","Regulating banks","Issuing govt bonds"],a:1,e:"Commercial banks accept deposits and lend."},
+{q:"A development bank in India is:",o:["SBI","HDFC Bank","NABARD","ICICI Bank"],a:2,e:"NABARD is a development bank."},
+{q:"New Development Bank (BRICS) founded in:",o:["2013","2014","2015","2016"],a:2,e:"NDB founded in 2015."},
+{q:"First President of NDB:",o:["Dilma Rousseff","K.V. Kamath","Ajay Banga","Jim Yong Kim"],a:1,e:"K.V. Kamath was the first NDB President."},
+{q:"NDB HQ is in:",o:["New Delhi","Beijing","Shanghai","Moscow"],a:2,e:"NDB is in Shanghai, China."},
+{q:"PPF was introduced in:",o:["1950","1956","1968","1980"],a:2,e:"PPF introduced in 1968."},
+{q:"PPF is a government-backed:",o:["Insurance scheme","Retirement savings scheme","Housing scheme","Education scheme"],a:1,e:"PPF = government-backed retirement savings."},
+{q:"PPF lock-in period:",o:["5 years","10 years","15 years","20 years"],a:2,e:"PPF has a 15-year lock-in."},
+{q:"SIP stands for:",o:["Standard Investment Plan","Systematic Investment Plan","Savings and Investment Plan","Smart Investment Plan"],a:1,e:"SIP = Systematic Investment Plan."},
+{q:"Gilt Funds invest in:",o:["Corporate bonds","Government securities","Stocks","Real estate"],a:1,e:"Gilt funds invest in government securities only."},
+{q:"An Index Fund is:",o:["Actively managed fund","Fund that tracks a market index","Gold fund","Real estate fund"],a:1,e:"Index funds passively track a market index."},
+{q:"DICGC insures deposits up to:",o:["Rs 1 lakh","Rs 2 lakh","Rs 5 lakh","Rs 10 lakh"],a:2,e:"DICGC insures up to Rs 5 lakh per depositor per bank."},
+{q:"NHB stands for:",o:["National Housing Board","National Housing Bank","National Home Bank","National Housing Bureau"],a:1,e:"NHB = National Housing Bank."},
+{q:"NHB is a subsidiary of:",o:["Government of India","SBI","NABARD","RBI"],a:3,e:"NHB is a wholly-owned subsidiary of RBI."},
+{q:"IBBI was established for:",o:["Banking regulation","Insolvency and bankruptcy resolution","Insurance regulation","Tax collection"],a:1,e:"IBBI = Insolvency and Bankruptcy Board of India (2016)."},
+{q:"PFRDA regulates:",o:["Insurance","Banking","Pension funds (NPS)","Stock markets"],a:2,e:"PFRDA regulates the National Pension System."},
+{q:"CIBIL provides:",o:["Insurance coverage","Credit scores and reports","Banking licenses","Deposit insurance"],a:1,e:"CIBIL provides credit scores and reports."}
+];
+let ci=0,score=0,answered=[];
+function render(){const q=Q[ci];document.getElementById("pbar").style.width=((ci/Q.length)*100)+"%";document.getElementById("qcount").textContent=`Q ${ci+1}/${Q.length}`;document.getElementById("scorecount").textContent=`Score: ${score}`;let h=`<div class="q-num">Q${ci+1}/${Q.length}</div><div class="q-text">${q.q}</div>`;q.o.forEach((o,i)=>{h+=`<button class="option" onclick="pick(${i})">${String.fromCharCode(65+i)}) ${o}</button>`;});h+=`<div class="explanation" id="expl">💡 ${q.e}</div>`;document.getElementById("qcard").innerHTML=h;document.getElementById("nextBtn").classList.add("hidden");}
+function pick(i){if(document.querySelector(".option.disabled"))return;const q=Q[ci];document.querySelectorAll(".option").forEach((b,j)=>{b.classList.add("disabled");if(j===q.a)b.classList.add("correct");if(j===i&&i!==q.a)b.classList.add("wrong");});if(i===q.a)score++;answered.push({qi:ci,sel:i,correct:i===q.a});document.getElementById("expl").style.display="block";document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("scorecount").textContent=`Score: ${score}`;}
+function nextQ(){ci++;if(ci>=Q.length){showResult();return;}render();}
+function showResult(){document.getElementById("quiz-area").classList.add("hidden");const pct=Math.round((score/Q.length)*100);let cls=pct>=80?"score-good":pct>=50?"score-avg":"score-low";let grd=pct>=80?"🏆 Expert":pct>=65?"👍 Intermediate":pct>=50?"📘 Beginner":"🔄 Retry";let h=`<div class="card result-card"><h2>B8 Complete!</h2><div class="score-circle ${cls}">${pct}%</div><p style="font-size:1.2em">${score}/${Q.length}</p><p style="color:#aaa">${grd}</p><table class="result-table"><tr><th>Metric</th><th>Value</th></tr><tr><td>✅ Correct</td><td>${score}</td></tr><tr><td>❌ Wrong</td><td>${Q.length-score}</td></tr><tr><td>📊 %</td><td>${pct}%</td></tr></table></div><h3 style="margin:20px 0 10px">📝 Review</h3>`;answered.forEach((a,i)=>{const q=Q[a.qi];h+=`<div class="review-q ${a.correct?'r-correct':'r-wrong'}"><strong>Q${i+1}.</strong> ${q.q}<br><span style="color:${a.correct?'#69f0ae':'#ff5252'}">You: ${String.fromCharCode(65+a.sel)}) ${q.o[a.sel]}</span>`;if(!a.correct)h+=`<br><span style="color:#69f0ae">✅ ${String.fromCharCode(65+q.a)}) ${q.o[q.a]}</span>`;h+=`<br><small style="color:#aaa">💡 ${q.e}</small></div>`;});h+=`<div class="btn-row" style="margin:30px 0"><button class="btn btn-next" onclick="location.reload()">🔄 Retry</button></div>`;document.getElementById("result-area").innerHTML=h;document.getElementById("result-area").classList.remove("hidden");}
+render();
+</script>
+</body>
+</html>
+

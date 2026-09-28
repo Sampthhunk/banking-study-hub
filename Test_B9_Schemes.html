@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test B9 – International & Schemes</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#1f4037,#99f2c8);min-height:100vh;color:#fff;padding:20px}.container{max-width:750px;margin:0 auto}.header{text-align:center;padding:20px;background:rgba(0,0,0,.4);border-radius:16px;margin-bottom:20px;border:1px solid rgba(255,255,255,.1)}.header h1{font-size:1.4em;background:linear-gradient(90deg,#99f2c8,#1f4037);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.header p{color:#ccc;margin-top:5px;font-size:.9em}.progress-container{background:rgba(0,0,0,.2);border-radius:20px;height:10px;margin:20px 0;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(90deg,#99f2c8,#1f4037);border-radius:20px;transition:width .4s}.stats{display:flex;justify-content:space-between;font-size:.85em;color:#ddd;margin-bottom:15px}.card{background:rgba(0,0,0,.3);border-radius:16px;padding:25px;border:1px solid rgba(255,255,255,.1);margin-bottom:20px}.q-num{font-size:.8em;color:#99f2c8;font-weight:700;margin-bottom:8px}.q-text{font-size:1.05em;line-height:1.5;margin-bottom:20px}.option{display:block;width:100%;padding:14px 18px;margin:8px 0;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;font-size:.95em;cursor:pointer;text-align:left;transition:all .2s}.option:hover:not(.disabled){background:rgba(255,255,255,.12)}.option.correct{background:rgba(0,200,83,.2);border-color:#00c853;color:#69f0ae}.option.wrong{background:rgba(255,23,68,.2);border-color:#ff1744;color:#ff5252}.option.disabled{cursor:default;opacity:.7}.explanation{margin-top:15px;padding:15px;background:rgba(255,215,0,.08);border-left:3px solid #ffd200;border-radius:0 8px 8px 0;font-size:.9em;color:#eee;display:none}.btn-row{display:flex;gap:10px;justify-content:center;margin-top:15px}.btn{padding:12px 30px;border:none;border-radius:10px;font-size:.95em;font-weight:600;cursor:pointer}.btn-next{background:linear-gradient(90deg,#1f4037,#99f2c8);color:#000}.result-card{text-align:center;padding:40px}.score-circle{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:20px auto;font-size:2em;font-weight:700}.score-good{background:rgba(0,200,83,.15);border:3px solid #00c853;color:#69f0ae}.score-avg{background:rgba(255,215,0,.15);border:3px solid #ffd200;color:#ffd200}.score-low{background:rgba(255,23,68,.15);border:3px solid #ff1744;color:#ff5252}.result-table{width:100%;margin-top:25px;border-collapse:collapse;font-size:.85em}.result-table th{padding:10px;background:rgba(255,255,255,.1);text-align:left}.result-table td{padding:8px 10px}.review-q{padding:15px;margin:10px 0;border-radius:10px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.1)}.review-q.r-correct{border-left:4px solid #00c853}.review-q.r-wrong{border-left:4px solid #ff1744}.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header"><h1>🌍 Test B9 – International Orgs & Govt Schemes</h1><p>Set B • Q241–Q270 of 307</p></div>
+<div id="quiz-area">
+<div class="progress-container"><div class="progress-bar" id="pbar" style="width:0%"></div></div>
+<div class="stats"><span id="qcount">Q 1/30</span><span id="scorecount">Score: 0</span></div>
+<div class="card" id="qcard"></div>
+<div class="btn-row"><button class="btn btn-next hidden" id="nextBtn" onclick="nextQ()">Next →</button></div>
+</div>
+<div id="result-area" class="hidden"></div>
+</div>
+<script>
+const Q=[
+{q:"IMF is headquartered in:",o:["Geneva","New York","Washington D.C.","London"],a:2,e:"IMF HQ is in Washington D.C., USA."},
+{q:"IMF was established on:",o:["27 Dec 1944","27 Dec 1945","1 Jan 1946","1 July 1947"],a:1,e:"IMF established 27 December 1945."},
+{q:"Primary objective of IMF:",o:["Poverty reduction","Financial stability & monetary cooperation","Trade regulation","Banking supervision"],a:1,e:"IMF promotes financial stability and monetary cooperation."},
+{q:"World Bank provides loans to:",o:["Developed countries only","Low and middle-income countries","Only BRICS","Only Asian countries"],a:1,e:"World Bank lends to low and middle-income countries."},
+{q:"Current World Bank President:",o:["Jim Yong Kim","David Malpass","Ajay Banga","Kristalina Georgieva"],a:2,e:"Ajay Banga is the current World Bank President."},
+{q:"SWIFT is headquartered in:",o:["New York","London","Brussels","Geneva"],a:2,e:"SWIFT HQ is in Brussels, Belgium."},
+{q:"AIIB is headquartered in:",o:["Shanghai","Tokyo","Beijing","New Delhi"],a:2,e:"AIIB HQ is in Beijing, China."},
+{q:"ADB is headquartered in:",o:["Tokyo","Manila","Beijing","Jakarta"],a:1,e:"ADB HQ is in Manila, Philippines."},
+{q:"FEMA stands for:",o:["Foreign Exchange Money Act","Foreign Exchange Management Act","Federal Exchange Management Act","Foreign Economic Management Act"],a:1,e:"FEMA = Foreign Exchange Management Act, 1999."},
+{q:"FEMA replaced which act?",o:["PMLA","FERA","IBC","Banking Companies Act"],a:1,e:"FEMA replaced FERA (Foreign Exchange Regulation Act)."},
+{q:"Section 66C of IT Act 2000 covers:",o:["Cyber terrorism","Fraudulent use of electronic signatures","Data theft","Online defamation"],a:1,e:"Section 66C = fraudulent use of electronic signatures."},
+{q:"SARFAESI Act was enacted in:",o:["1999","2000","2002","2005"],a:2,e:"SARFAESI Act 2002 for NPA recovery."},
+{q:"IBC was enacted in:",o:["2014","2015","2016","2017"],a:2,e:"IBC enacted in 2016."},
+{q:"Narasimham Committee recommended:",o:["GST implementation","Banking sector reforms & 3-tier structure","Insurance regulation","Tax reforms"],a:1,e:"Banking reforms and 3-tier banking structure."},
+{q:"First Regional Rural Bank in India:",o:["Gramin Bank","Syndicate Bank","Pratham Bank","Kisan Bank"],a:2,e:"Pratham Bank was the first RRB (Punjab, 1975)."},
+{q:"RRBs were established in:",o:["1969","1972","1975","1980"],a:2,e:"Regional Rural Banks started in 1975."},
+{q:"PM Jan Dhan Yojana was launched on:",o:["15 Aug 2014","28 Aug 2014","2 Oct 2014","1 Apr 2015"],a:1,e:"PMJDY launched 28 August 2014."},
+{q:"PMJDY provides accident insurance of:",o:["Rs 1 lakh","Rs 2 lakh","Rs 5 lakh","Rs 10 lakh"],a:1,e:"PMJDY = Rs 2 lakh accident insurance via RuPay."},
+{q:"PMSBY annual premium is:",o:["Rs 12","Rs 20","Rs 330","Rs 436"],a:1,e:"PMSBY premium = Rs 20/year."},
+{q:"PMJJBY annual premium is:",o:["Rs 12","Rs 20","Rs 330","Rs 436"],a:3,e:"PMJJBY premium = Rs 436/year."},
+{q:"Atal Pension Yojana provides pension after age:",o:["55","58","60","65"],a:2,e:"APY pension starts at age 60."},
+{q:"APY eligibility age group:",o:["18-40","18-50","18-60","21-65"],a:0,e:"APY for citizens aged 18-40."},
+{q:"MUDRA Shishu: loans up to:",o:["Rs 10,000","Rs 50,000","Rs 5 lakh","Rs 10 lakh"],a:1,e:"Shishu = up to Rs 50,000."},
+{q:"MUDRA Kishor: loans:",o:["Up to Rs 50,000","Rs 50,000 to Rs 5 lakh","Rs 5 lakh to Rs 10 lakh","Rs 10 lakh to Rs 20 lakh"],a:1,e:"Kishor = Rs 50,000 to Rs 5 lakh."},
+{q:"MUDRA Tarun: loans:",o:["Up to Rs 50,000","Rs 50,000 to Rs 5 lakh","Rs 5 lakh to Rs 10 lakh","Rs 10 lakh to Rs 20 lakh"],a:2,e:"Tarun = Rs 5 lakh to Rs 10 lakh."},
+{q:"Stand Up India provides loans for:",o:["All entrepreneurs","SC/ST and Women entrepreneurs","Farmers only","Govt employees"],a:1,e:"Stand Up India = Rs 10L to Rs 1Cr for SC/ST/Women."},
+{q:"Financial inclusion means:",o:["Only digital payments","Banking services to all sections of society","Foreign investment in banks","Merger of banks"],a:1,e:"Financial inclusion = banking for all."},
+{q:"'NSF' on a returned cheque means:",o:["Not Sufficient Funds","No Service Fee","Non-Standard Form","Not Signed Formally"],a:0,e:"NSF = Non-Sufficient Funds."},
+{q:"TDS stands for:",o:["Tax Deducted at Source","Tax Deposited at Source","Total Direct Savings","Tax Deduction Scheme"],a:0,e:"TDS = Tax Deducted at Source."},
+{q:"Which is NOT a direct tax?",o:["Income Tax","Corporation Tax","GST","Capital Gains Tax"],a:2,e:"GST is an indirect tax."}
+];
+let ci=0,score=0,answered=[];
+function render(){const q=Q[ci];document.getElementById("pbar").style.width=((ci/Q.length)*100)+"%";document.getElementById("qcount").textContent=`Q ${ci+1}/${Q.length}`;document.getElementById("scorecount").textContent=`Score: ${score}`;let h=`<div class="q-num">Q${ci+1}/${Q.length}</div><div class="q-text">${q.q}</div>`;q.o.forEach((o,i)=>{h+=`<button class="option" onclick="pick(${i})">${String.fromCharCode(65+i)}) ${o}</button>`;});h+=`<div class="explanation" id="expl">💡 ${q.e}</div>`;document.getElementById("qcard").innerHTML=h;document.getElementById("nextBtn").classList.add("hidden");}
+function pick(i){if(document.querySelector(".option.disabled"))return;const q=Q[ci];document.querySelectorAll(".option").forEach((b,j)=>{b.classList.add("disabled");if(j===q.a)b.classList.add("correct");if(j===i&&i!==q.a)b.classList.add("wrong");});if(i===q.a)score++;answered.push({qi:ci,sel:i,correct:i===q.a});document.getElementById("expl").style.display="block";document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("scorecount").textContent=`Score: ${score}`;}
+function nextQ(){ci++;if(ci>=Q.length){showResult();return;}render();}
+function showResult(){document.getElementById("quiz-area").classList.add("hidden");const pct=Math.round((score/Q.length)*100);let cls=pct>=80?"score-good":pct>=50?"score-avg":"score-low";let grd=pct>=80?"🏆 Expert":pct>=65?"👍 Intermediate":pct>=50?"📘 Beginner":"🔄 Retry";let h=`<div class="card result-card"><h2>B9 Complete!</h2><div class="score-circle ${cls}">${pct}%</div><p style="font-size:1.2em">${score}/${Q.length}</p><p style="color:#ccc">${grd}</p><table class="result-table"><tr><th>Metric</th><th>Value</th></tr><tr><td>✅</td><td>${score}</td></tr><tr><td>❌</td><td>${Q.length-score}</td></tr><tr><td>📊</td><td>${pct}%</td></tr></table></div><h3 style="margin:20px 0 10px">📝 Review</h3>`;answered.forEach((a,i)=>{const q=Q[a.qi];h+=`<div class="review-q ${a.correct?'r-correct':'r-wrong'}"><strong>Q${i+1}.</strong> ${q.q}<br><span style="color:${a.correct?'#69f0ae':'#ff5252'}">You: ${String.fromCharCode(65+a.sel)}) ${q.o[a.sel]}</span>`;if(!a.correct)h+=`<br><span style="color:#69f0ae">✅ ${String.fromCharCode(65+q.a)}) ${q.o[q.a]}</span>`;h+=`<br><small style="color:#ccc">💡 ${q.e}</small></div>`;});h+=`<div class="btn-row" style="margin:30px 0"><button class="btn btn-next" onclick="location.reload()">🔄 Retry</button></div>`;document.getElementById("result-area").innerHTML=h;document.getElementById("result-area").classList.remove("hidden");}
+render();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,310 @@
+
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Grand Test B — YouTube</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:#f0f4ff;color:#1e3a5f;padding:10px;max-width:680px;margin:0 auto}
+.hd{background:linear-gradient(135deg,#ef4444,#991b1b);color:#fff;padding:16px;border-radius:14px;text-align:center;margin-bottom:8px}
+.hd h1{font-size:1.15em}.hd p{font-size:.68em;opacity:.85}
+#modeBox{background:#fff;border-radius:14px;padding:24px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.08);margin:20px 0}
+#modeBox h2{color:#ef4444;margin-bottom:6px;font-size:1.1em}
+#modeBox p{color:#64748b;font-size:.72em;margin-bottom:14px}
+.mcard{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.mc{background:#fff;border:2px solid #e5e7eb;border-radius:12px;padding:14px;width:45%;min-width:140px;cursor:pointer;text-align:center}
+.mc:hover{border-color:#ef4444;background:#fef2f2;transform:translateY(-2px)}
+.mc .mi{font-size:2em;margin-bottom:4px}.mc .mn{font-weight:700;font-size:.85em;color:#ef4444}.mc .md{font-size:.65em;color:#64748b;margin-top:3px}
+.nav{display:flex;flex-wrap:wrap;gap:3px;margin:8px 0;justify-content:center}
+.nb{width:26px;height:26px;border-radius:50%;border:2px solid #d1d5db;background:#fff;font-size:.6em;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.nb.cur{border-color:#1a56db;background:#dbeafe}.nb.gn{background:#d1fae5;border-color:#27ae60;color:#065f46}.nb.rd{background:#fee2e2;border-color:#ef4444;color:#991b1b}.nb.bk{box-shadow:0 0 0 2px #f59e0b}.nb.ans{background:#dbeafe;border-color:#1a56db}
+.prog{background:#e5e7eb;height:5px;border-radius:3px;margin:5px 0;overflow:hidden}.pf{height:100%;background:#ef4444;border-radius:3px}
+.mbadge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7em;font-weight:700;margin:5px 0}
+.mbadge.learn{background:#d1fae5;color:#065f46}.mbadge.exam{background:#fee2e2;color:#991b1b}
+.q{background:#fff;border-radius:12px;padding:12px;margin:6px 0;box-shadow:0 2px 6px rgba(0,0,0,.04);display:none}
+.q.act{display:block}.q h3{font-size:.8em;margin-bottom:6px;color:#ef4444}
+.opts label{display:block;padding:7px 10px;margin:3px 0;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;font-size:.75em;transition:.15s}
+.opts label:hover{border-color:#1a56db;background:#eff6ff}
+.opts label.correct{border-color:#27ae60;background:#d1fae5;color:#065f46;font-weight:700}
+.opts label.wrong{border-color:#ef4444;background:#fee2e2;color:#991b1b}
+.opts label.picked{border-color:#1a56db;font-weight:600}
+.opts label.disabled{pointer-events:none;opacity:.7}
+.exp{display:none;background:#fef2f2;border-left:3px solid #ef4444;padding:6px 10px;margin-top:6px;border-radius:0 8px 8px 0;font-size:.7em;color:#64748b}
+.bkb{background:none;border:none;font-size:1em;cursor:pointer;opacity:.3;float:right}.bkb.on{opacity:1}
+.btns{display:flex;gap:5px;justify-content:center;margin:8px 0}
+.bt{padding:7px 16px;border:none;border-radius:8px;font-size:.78em;font-weight:700;cursor:pointer}
+.pv{background:#e5e7eb;color:#1e3a5f}.nx{background:#1a56db;color:#fff}.sm{background:#27ae60;color:#fff}
+.rt{background:#8b5cf6;color:#fff}.hm{background:#64748b;color:#fff}
+.res{display:none;background:#fff;border-radius:14px;padding:18px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.08);margin:8px 0}
+.res h2{color:#ef4444}.big{font-size:2em;font-weight:700;margin:6px 0}
+.big.hi{color:#27ae60}.big.md{color:#f59e0b}.big.lo{color:#ef4444}
+.wk{background:#fff;border-radius:9px;padding:8px;margin:6px 0;font-size:.7em}
+.wk h3{color:#ef4444;margin-bottom:3px}.wi{background:#fee2e2;border-radius:5px;padding:3px 6px;margin:2px;display:inline-block;font-size:.88em}
+.tmr{font-family:monospace;font-size:.95em;font-weight:700;color:#fff}
+</style></head><body>
+<div class="hd"><h1>📺 Grand Test B — YouTube</h1><p>Random 30 from 307 Pool | ⏱️ <span class="tmr" id="tmr">--:--</span> | 🔄 Every retake = new questions!</p></div>
+<div id="modeBox">
+<h2>🎮 Choose Your Mode</h2><p>How do you want to take this test?</p>
+<div class="mcard">
+<div class="mc" onclick="startMode('learn')"><div class="mi">📚</div><div class="mn">Learn Mode</div><div class="md">Instant right/wrong<br>See explanation immediately<br>No timer pressure</div></div>
+<div class="mc" onclick="startMode('exam')"><div class="mi">📝</div><div class="mn">Exam Mode</div><div class="md">Select all 30 first<br>Submit at end<br>25-min countdown</div></div>
+</div></div>
+<div id="testArea" style="display:none">
+<div id="modeBadge"></div>
+<div class="nav" id="nav"></div>
+<div class="prog"><div class="pf" id="pb" style="width:0%"></div></div>
+<div id="qb"></div>
+<div class="btns" id="btns"><button class="bt pv" onclick="go(-1)">◀Prev</button><button class="bt nx" onclick="go(1)">Next▶</button><button class="bt sm" id="subBtn" onclick="sub()">✅Submit</button></div>
+</div>
+<div class="res" id="res">
+<h2>📊 Results</h2><div class="big" id="scr"></div><p id="det"></p>
+<div class="wk" id="wkB" style="display:none"><h3>📉 Weak Areas</h3><div id="wkL"></div></div>
+<div class="btns"><button class="bt rt" onclick="retake()">🔄 Retake (New 30!)</button><button class="bt hm" onclick="location.href='Dashboard.html'">🏠 Dashboard</button></div></div>
+<script>
+var TN='Grand_Test_B.html',TNM='GrandB';
+var POOL=[
+{q:"Art 112 refers to?",o:["Fiscal Policy","Annual Financial Statement","GST Council","Finance Commission"],a:1,t:"Budget",e:"Union Budget = Annual Financial Statement."},
+{q:"Budget word from?",o:["Latin","French 'Bougette'","English","Greek"],a:1,t:"Budget",e:"Bougette = small leather bag."},
+{q:"Who defined budget?",o:["Willoughby","Leroy Beaulieu","Adam Smith","Keynes"],a:1,t:"Budget",e:"Leroy Beaulieu defined budget."},
+{q:"Budget introduced in India?",o:["1858","1860","1870","1900"],a:1,t:"Budget",e:"Lord Canning 1860."},
+{q:"First independent India budget?",o:["Nehru","Patel","RK Shanmukham Chetty","John Mathai"],a:2,t:"Budget",e:"26 Nov 1947."},
+{q:"First paperless Union Budget?",o:["2019-20","2020-21","2021-22","2022-23"],a:2,t:"Budget",e:"2021-22 was first paperless."},
+{q:"First paperless state budget?",o:["Odisha","UP","MP","Kerala"],a:1,t:"Budget",e:"Uttar Pradesh Feb 2021."},
+{q:"Max budgets presented by?",o:["P Chidambaram","Pranab Mukherjee","Morarji Desai","Nirmala Sitharaman"],a:2,t:"Budget",e:"Morarji Desai—10 budgets."},
+{q:"First woman FM?",o:["Indira Gandhi","Sushma Swaraj","Nirmala Sitharaman","Smriti Irani"],a:2,t:"Budget",e:"First full-time woman FM."},
+{q:"ZBB created by?",o:["Peter A Phyrr","Adam Smith","Keynes","Leroy Beaulieu"],a:0,t:"Budget",e:"Peter A Phyrr, first used in US."},
+{q:"ZBB in India first?",o:["1980","1985","1987","1990"],a:2,t:"Budget",e:"1987 in India."},
+{q:"Budget prepared by?",o:["PM Office","Ministry of Finance","RBI","NITI Aayog"],a:1,t:"Budget",e:"Dept of Economic Affairs, Ministry of Finance."},
+{q:"Budget presented by?",o:["PM","President","Finance Minister","Speaker"],a:2,t:"Budget",e:"FM presents in Parliament."},
+{q:"Fiscal deficit 2025-26?",o:["3.6%","4.0%","4.4%","5.1%"],a:2,t:"Budget",e:"4.4% of GDP."},
+{q:"Progressive tax means?",o:["Same for all","Higher rate for higher income","Lower for richer","No tax"],a:1,t:"Budget",e:"Richer pay more %."},
+{q:"Fiscal Policy managed by?",o:["RBI","Finance Ministry","SEBI","NITI Aayog"],a:1,t:"Budget",e:"Govt manages fiscal policy."},
+{q:"Budget types?",o:["Revenue & Capital","Deficit & Surplus","Income & Expense","Direct & Indirect"],a:0,t:"Budget",e:"Revenue Budget + Capital Budget."},
+{q:"First Gender Budget?",o:["2001-02","2003-04","2005-06","2008-09"],a:2,t:"Budget",e:"2005-06."},
+{q:"RBI manages?",o:["Fiscal policy","Monetary policy","Trade policy","Industrial policy"],a:1,t:"Budget",e:"RBI manages liquidity via monetary policy."},
+{q:"Interest rates decided by?",o:["Govt","RBI","SEBI","Finance Ministry"],a:1,t:"Budget",e:"RBI decides repo rate etc."},
+{q:"GST stands for?",o:["General Sales Tax","Goods & Services Tax","Government Service Tax","Global Standard Tax"],a:1,t:"GST",e:"Goods and Services Tax."},
+{q:"GST implemented on?",o:["1 Apr 2017","1 Jul 2017","1 Jan 2018","1 Apr 2018"],a:1,t:"GST",e:"1 July 2017."},
+{q:"GST Constitutional Amendment?",o:["99th","100th","101st","102nd"],a:2,t:"GST",e:"101st Amendment."},
+{q:"GST Council members?",o:["28","33","37","45"],a:2,t:"GST",e:"37 members."},
+{q:"India's GST model?",o:["Single","Dual","Triple","Quad"],a:1,t:"GST",e:"Dual GST—CGST + SGST."},
+{q:"GSTIN digits?",o:["10","12","15","18"],a:2,t:"GST",e:"15-character alphanumeric."},
+{q:"Father of GST?",o:["P Chidambaram","Manmohan Singh","Arun Jaitley","Nirmala Sitharaman"],a:2,t:"GST",e:"Arun Jaitley."},
+{q:"First country with GST?",o:["India","Canada","France","Australia"],a:2,t:"GST",e:"France 1954."},
+{q:"GST is?",o:["Direct tax","Indirect tax","Property tax","Wealth tax"],a:1,t:"GST",e:"Indirect consumption tax."},
+{q:"GST subsumed?",o:["Income Tax","Property Tax","Service Tax","Wealth Tax"],a:2,t:"GST",e:"Service Tax subsumed into GST."},
+{q:"First state to pass GST?",o:["Maharashtra","Assam","Telangana","Bihar"],a:1,t:"GST",e:"Assam first."},
+{q:"GST rates (pre-2.0)?",o:["0,5,12,18,28%","0,5,10,20,30%","0,5,15,25%","0,8,16,24%"],a:0,t:"GST",e:"Five slab structure."},
+{q:"3% is a GST rate?",o:["Yes","No","Only for gold","Only for exports"],a:1,t:"GST",e:"3% is NOT a standard GST rate."},
+{q:"IGST for?",o:["Intra-state","Inter-state","Exports only","Imports only"],a:1,t:"GST",e:"Inter-state supply."},
+{q:"CGST collected by?",o:["State","Centre","Both","Local"],a:1,t:"GST",e:"Central Government."},
+{q:"SGST collected by?",o:["Centre","State","Both","UT"],a:1,t:"GST",e:"State Government."},
+{q:"HSN Code for?",o:["Services","Goods","Both","Tax rates"],a:1,t:"GST",e:"Harmonised System of Nomenclature."},
+{q:"SAC Code for?",o:["Goods","Services","Both","Exports"],a:1,t:"GST",e:"Services Accounting Code."},
+{q:"ITC means?",o:["Income Tax Credit","Input Tax Credit","Indirect Tax Collection","Intl Trade Credit"],a:1,t:"GST",e:"Tax on purchases can be offset."},
+{q:"GST registration needs?",o:["Aadhaar","PAN","Voter ID","Passport"],a:1,t:"GST",e:"PAN required for GST registration."},
+{q:"Intra-state supply taxed by?",o:["IGST","CGST+SGST","CGST only","SGST only"],a:1,t:"GST",e:"CGST and SGST combined."},
+{q:"Max GST rate (pre-2.0)?",o:["18%","24%","28%","32%"],a:2,t:"GST",e:"28% was highest."},
+{q:"GST Council HQ?",o:["Mumbai","Chennai","Kolkata","New Delhi"],a:3,t:"GST",e:"New Delhi."},
+{q:"GSTR-3B due?",o:["10th","15th","20th","25th"],a:2,t:"GST",e:"20th of next month."},
+{q:"GSTR-3B is for?",o:["Filing returns","Paying GST liability","Registration","Refund"],a:1,t:"GST",e:"Paying GST tax liability."},
+{q:"Composite dealers file?",o:["GSTR-1","GSTR-3B","CMP-08","GSTR-9"],a:2,t:"GST",e:"CMP-08 quarterly."},
+{q:"GST registration threshold?",o:["₹20L","₹40L","₹1.2Cr","₹1.5Cr"],a:2,t:"GST",e:"₹1.2 Crore regular scheme."},
+{q:"GST portal?",o:["gst.com","gst.gov.in","gstin.gov.in","tax.gov.in"],a:1,t:"GST",e:"www.gst.gov.in."},
+{q:"Documents must be provided within?",o:["7 days","10 days","15 working days","30 days"],a:2,t:"GST",e:"15 working days."},
+{q:"First GST Council chairman?",o:["PM Modi","Arun Jaitley","Nirmala Sitharaman","Pranab"],a:1,t:"GST",e:"Arun Jaitley."},
+{q:"GST 2.0 new slabs?",o:["0,5,12,18,28%","0,5,18,40%","0,5,15,25%","0,5,12,28%"],a:1,t:"GST2",e:"Effective 22 Sep 2025."},
+{q:"GST 2.0 removed slabs?",o:["5% & 18%","12% & 28%","0% & 5%","18% & 40%"],a:1,t:"GST2",e:"12% and 28% removed."},
+{q:"40% GST for?",o:["Essential goods","Luxury goods","Sin/demerit goods","Exports"],a:2,t:"GST2",e:"Tobacco, aerated drinks."},
+{q:"GST 2.0 effective date?",o:["1 Jul 2025","22 Sep 2025","1 Jan 2026","1 Apr 2026"],a:1,t:"GST2",e:"22 September 2025."},
+{q:"55th GST Council approved?",o:["GST 1.5","GST 2.0","GST 3.0","GST Plus"],a:1,t:"GST2",e:"GST 2.0 reforms."},
+{q:"GST 2.0 is?",o:["Revenue increasing","Revenue neutral","Revenue reducing","Tax holiday"],a:1,t:"GST2",e:"Revenue-neutral design."},
+{q:"Essential goods GST 2.0 rate?",o:["0%","5%","18%","40%"],a:0,t:"GST2",e:"0% for essential goods."},
+{q:"GST 2.0 aims to?",o:["Increase taxes","Simplify structure","Add more slabs","Remove GST"],a:1,t:"GST2",e:"Simplify tax structure."},
+{q:"GST 2.0 how many slabs?",o:["3","4","5","6"],a:1,t:"GST2",e:"4 slabs: 0%, 5%, 18%, 40%."},
+{q:"Which slab NOT in GST 2.0?",o:["0%","5%","12%","18%"],a:2,t:"GST2",e:"12% removed in GST 2.0."},
+{q:"Export taxation in GST 2.0?",o:["0%","5%","18%","Same as before"],a:3,t:"GST2",e:"Export taxation unchanged."},
+{q:"RBI established?",o:["1930","1935","1945","1949"],a:1,t:"Banking",e:"1 April 1935."},
+{q:"RBI nationalized?",o:["1935","1947","1949","1955"],a:2,t:"Banking",e:"1 January 1949."},
+{q:"Current RBI Governor?",o:["Shaktikanta Das","Urjit Patel","Raghuram Rajan","Sanjay Malhotra"],a:3,t:"Banking",e:"Sanjay Malhotra, 26th Governor."},
+{q:"RBI HQ?",o:["Delhi","Kolkata","Mumbai","Chennai"],a:2,t:"Banking",e:"Mumbai since 1937."},
+{q:"Repo Rate is?",o:["Rate RBI borrows","Rate RBI lends to banks","Public loan rate","FD rate"],a:1,t:"Banking",e:"Short-term lending to banks."},
+{q:"Reverse Repo Rate?",o:["Rate RBI lends","Rate banks earn from RBI","Public rate","FD rate"],a:1,t:"Banking",e:"RBI borrows from banks."},
+{q:"CRR stands for?",o:["Cash Reserve Ratio","Credit Reserve Ratio","Current Reserve Ratio","Central Reserve Ratio"],a:0,t:"Banking",e:"Cash kept with RBI."},
+{q:"SLR stands for?",o:["Standard Liquidity","Statutory Lending Rate","Statutory Liquidity Ratio","Special Liquidity"],a:2,t:"Banking",e:"% in govt securities."},
+{q:"MCLR stands for?",o:["Marginal Cost of Lending Rate","Minimum Credit Lending","Maximum Cost Lending","Marginal Credit Loan"],a:0,t:"Banking",e:"Minimum lending rate."},
+{q:"₹1 note issued by?",o:["RBI","Finance Ministry","SBI","PM Office"],a:1,t:"Banking",e:"Ministry of Finance."},
+{q:"How many PSBs (2025)?",o:["10","12","14","18"],a:1,t:"Banking",e:"12 PSBs after merger."},
+{q:"SBI established?",o:["1935","1945","1955","1969"],a:2,t:"Banking",e:"1 July 1955."},
+{q:"Imperial Bank renamed to SBI in?",o:["1949","1954","1955","1960"],a:2,t:"Banking",e:"Imperial Bank → SBI in 1955."},
+{q:"14 banks nationalized?",o:["1955","1969","1980","1991"],a:1,t:"Banking",e:"19 July 1969."},
+{q:"RTGS minimum?",o:["₹1L","₹2L","₹5L","No minimum"],a:1,t:"Banking",e:"₹2 lakh minimum."},
+{q:"NEFT stands for?",o:["National Electronic Fund Transfer","National E-Finance","New Electronic Fund","National Exchange Fund"],a:0,t:"Banking",e:"Electronic fund transfer."},
+{q:"IMPS stands for?",o:["Immediate Payment Service","Instant Mobile Payment","Indian Mobile Payment","Immediate Mobile Pay"],a:0,t:"Banking",e:"24x7 instant transfers."},
+{q:"UPI stands for?",o:["Unified Payment Interface","Universal Payment India","Unified Pay Integration","United Payment Interface"],a:0,t:"Banking",e:"Unified Payments Interface."},
+{q:"UPI launched?",o:["2014","2016","2018","2020"],a:1,t:"Banking",e:"April 2016 by NPCI."},
+{q:"IFSC code characters?",o:["9","10","11","12"],a:2,t:"Banking",e:"11 alphanumeric."},
+{q:"SWIFT stands for?",o:["Society Worldwide Interbank Financial Telecom","Secure Wire Intl Fund","System World Interbank","Standard Worldwide Interbank"],a:0,t:"Banking",e:"International transfers."},
+{q:"NPA means?",o:["Non-Performing Assets","Net Profit Assets","National Payment Authority","New Policy Agreement"],a:0,t:"Banking",e:"Loans overdue >90 days."},
+{q:"NPA overdue period?",o:["30 days","60 days","90 days","180 days"],a:2,t:"Banking",e:"More than 90 days."},
+{q:"Current account earns?",o:["High interest","Low interest","No interest","Fixed interest"],a:2,t:"Banking",e:"No interest."},
+{q:"SEBI regulates?",o:["Banking","Insurance","Securities market","Pension"],a:2,t:"Banking",e:"Capital/securities market."},
+{q:"IRDAI full form?",o:["Insurance Regulatory Dev Authority of India","Indian Regulatory Dev Authority","Insurance Reserve Dev Authority","Indian Reserve Dev Authority"],a:0,t:"Banking",e:"Insurance Regulatory and Development Authority of India."},
+{q:"SIDBI stands for?",o:["Small Industries Dev Bank","State Industries Dev Bank","Small Investment Dev Bank","Southern Industries Dev Bank"],a:0,t:"Banking",e:"Est. 2 April 1990."},
+{q:"MUDRA is subsidiary of?",o:["RBI","SBI","SIDBI","NABARD"],a:2,t:"Banking",e:"MUDRA subsidiary of SIDBI."},
+{q:"NPCI handles?",o:["Monetary policy","Retail payments","Insurance","Pension"],a:1,t:"Banking",e:"UPI, IMPS, RuPay etc."},
+{q:"BHIM App launched by?",o:["RBI","PM Modi","Finance Minister","NPCI"],a:1,t:"Banking",e:"PM Narendra Modi."},
+{q:"BHIM App languages?",o:["8","11","13","22"],a:1,t:"Banking",e:"11 languages."},
+{q:"CTS stands for?",o:["Cheque Transfer System","Cheque Truncation System","Credit Transfer System","Central Transfer System"],a:1,t:"Banking",e:"Digital cheque processing."},
+{q:"White Label ATMs by?",o:["RBI","Banks","Non-bank companies","Govt"],a:2,t:"Banking",e:"Non-bank entities."},
+{q:"First White Label ATM?",o:["Muthoot","Indicash","Vakrangee","Srei"],a:1,t:"Banking",e:"Indicash, Tata, June 2013."},
+{q:"KYC under which act?",o:["RBI Act","PMLA","Companies Act","Banking Act"],a:1,t:"Banking",e:"Prevention of Money Laundering Act."},
+{q:"FEMA replaced?",o:["RBI Act","FERA","Companies Act","Banking Act"],a:1,t:"Banking",e:"FEMA 1999 replaced FERA."},
+{q:"Banking Regulation Act?",o:["1934","1949","1955","1969"],a:1,t:"Banking",e:"1949."},
+{q:"IT Act 2000 Sec 66C for?",o:["Hacking","Electronic signature fraud","Data theft","Piracy"],a:1,t:"Banking",e:"Fraudulent use of electronic signatures."},
+{q:"Collateral in banking?",o:["Loan amount","Security for loan","Interest rate","EMI"],a:1,t:"Banking",e:"Asset pledged as security."},
+{q:"PRAN digits?",o:["10","12","14","16"],a:1,t:"Banking",e:"12-digit Permanent Retirement Account Number."},
+{q:"Gold Monetization minimum?",o:["10g","30g","50g","100g"],a:2,t:"Banking",e:"50 grams raw gold."},
+{q:"Senior Citizen Savings tenure?",o:["3 yrs","5 yrs","7 yrs","10 yrs"],a:1,t:"Banking",e:"5-year maturity."},
+{q:"Recurring Deposit min tenure?",o:["3 months","6 months","1 year","2 years"],a:1,t:"Banking",e:"6 months."},
+{q:"BSBDA stands for?",o:["Basic Savings Bank Deposit Account","Business Savings Bank","Basic Standard Banking","Bank Savings Basic"],a:0,t:"Banking",e:"Zero-balance account."},
+{q:"New Development Bank president?",o:["Raghuram Rajan","KV Kamath","Urjit Patel","Jim Kim"],a:1,t:"Banking",e:"KV Kamath, BRICS bank."},
+{q:"BRICS bank founded?",o:["2010","2012","2015","2018"],a:2,t:"Banking",e:"New Development Bank 2015."},
+{q:"Crossed cheque means?",o:["Cash at counter","Must be deposited","Transfer abroad","Third party"],a:1,t:"Banking",e:"Cannot be cashed."},
+{q:"MICR code digits?",o:["6","9","11","13"],a:1,t:"Banking",e:"9-digit code on cheques."},
+{q:"Pratham Bank was first?",o:["Private bank","Regional Rural Bank","Foreign bank","Cooperative"],a:1,t:"Banking",e:"First RRB in Punjab."},
+{q:"RRBs established?",o:["1969","1974","1980","1990"],a:1,t:"Banking",e:"1974."},
+{q:"Bank of Hindustan?",o:["First bank in India","First RBI","First SBI","First ATM"],a:0,t:"Banking",e:"1770—first bank."},
+{q:"Allahabad Bank?",o:["Oldest foreign bank","Oldest joint stock bank","First nationalized","First private"],a:1,t:"Banking",e:"1865."},
+{q:"EXIM Bank established?",o:["1980","1982","1985","1990"],a:1,t:"Banking",e:"1 Jan 1982."},
+{q:"Plastic money?",o:["Polymer notes","Credit/Debit cards","Digital wallets","Bitcoin"],a:1,t:"Banking",e:"Cards."},
+{q:"NSF on cheque?",o:["No Signature Found","Non-Sufficient Funds","Not Signed","No Standard Format"],a:1,t:"Banking",e:"Insufficient funds."},
+{q:"Atal Pension matures at?",o:["55","58","60","65"],a:2,t:"Banking",e:"Age 60."},
+{q:"SIP stands for?",o:["Systematic Investment Plan","Standard Investment","Secure Investment","Structured Investment"],a:0,t:"Banking",e:"Regular investing."},
+{q:"Gilt funds invest in?",o:["Corporate bonds","Govt securities","Shares","Real estate"],a:1,t:"Banking",e:"Government securities."},
+{q:"Liquidity risk?",o:["Market crash","Can't meet daily cash needs","Currency fall","Credit default"],a:1,t:"Banking",e:"Short-term obligation risk."},
+{q:"ATM security best practice?",o:["Share PIN","Change PIN regularly","Use same PIN everywhere","Write PIN on card"],a:1,t:"Banking",e:"Change PIN regularly."},
+{q:"Narasimham Committee?",o:["GST reform","Banking reform","Insurance reform","Pension"],a:1,t:"Banking",e:"1991 & 1998 banking reforms."},
+{q:"Imperial Bank formed by?",o:["2 banks","3 Presidency banks","4 banks","5 banks"],a:1,t:"Banking",e:"Bengal+Bombay+Madras 1921."},
+{q:"Financial inclusion means?",o:["Only rich banking","Banking for all","Foreign banking","Digital only"],a:1,t:"Banking",e:"Access to banking for all sections."},
+{q:"TDS stands for?",o:["Tax Deducted at Source","Tax Due Salary","Total Direct Savings","Tax Deposit Scheme"],a:0,t:"Banking",e:"Deducted before payment."},
+{q:"Demand Draft is?",o:["Cheque","Banker's Cheque","Money Order","Bill of Exchange"],a:1,t:"Banking",e:"Cannot bounce."},
+{q:"SBI origin Bank of Calcutta?",o:["1770","1806","1840","1921"],a:1,t:"Banking",e:"1806."},
+{q:"UCO Bank tagline?",o:["Good People to Bank With","Honours Your Trust","Banking for All","India's Intl Bank"],a:1,t:"Banking",e:"Honours Your Trust."},
+{q:"SEBI statutory body?",o:["1988","1992","1995","2000"],a:1,t:"Banking",e:"SEBI Act 1992."},
+{q:"NABARD established?",o:["1978","1980","1982","1990"],a:2,t:"Banking",e:"12 July 1982."},
+{q:"LIC established?",o:["1950","1952","1956","1960"],a:2,t:"Banking",e:"1 Sep 1956."},
+{q:"First ATM in India?",o:["SBI","ICICI","HSBC","Citibank"],a:2,t:"Banking",e:"HSBC 1987."},
+{q:"DICGC insures up to?",o:["₹1L","₹2L","₹5L","₹10L"],a:2,t:"Banking",e:"₹5 lakh per depositor."},
+{q:"Skimming is?",o:["Online fraud","ATM card fraud device","Phishing","SIM swap"],a:1,t:"Banking",e:"Fraudulent device at ATM."},
+{q:"NARCL known as?",o:["Good bank","Bad bank","Foreign bank","Dev bank"],a:1,t:"Banking",e:"Manages stressed assets."},
+{q:"PPF introduced?",o:["1956","1968","1975","1980"],a:1,t:"Banking",e:"1968."},
+{q:"PPF lock-in?",o:["5 yrs","10 yrs","15 yrs","20 yrs"],a:2,t:"Banking",e:"15-year maturity."},
+{q:"Decimal coinage from?",o:["1947","1950","1957","1965"],a:2,t:"Banking",e:"1 April 1957."},
+{q:"IMF HQ?",o:["New York","Geneva","Washington DC","London"],a:2,t:"Banking",e:"Est. 1945."},
+{q:"Debit card digits?",o:["12","14","16","18"],a:2,t:"Banking",e:"16 digits."},
+{q:"MMID digits?",o:["4","6","7","8"],a:1,t:"Banking",e:"6 digits."},
+{q:"Banking sector?",o:["Primary","Secondary","Tertiary","Quaternary"],a:2,t:"Banking",e:"Service industry."},
+{q:"Vijaya+Dena merged with?",o:["SBI","PNB","Bank of Baroda","Canara"],a:2,t:"Banking",e:"1 Apr 2019."},
+{q:"Manmohan Singh was PM and?",o:["President","RBI Governor","FM","CJ"],a:1,t:"Banking",e:"Only PM = RBI Governor."},
+{q:"NACH stands for?",o:["National Automated Clearing House","National Auto Credit","New Automated Clearing","National Account Clearing"],a:0,t:"Banking",e:"Bulk electronic transactions."},
+{q:"SARFAESI Act?",o:["1998","2000","2002","2005"],a:2,t:"Banking",e:"2002 bad loan recovery."},
+{q:"IBC enacted?",o:["2014","2016","2018","2020"],a:1,t:"Banking",e:"Insolvency & Bankruptcy Code."},
+{q:"IBBI regulates?",o:["Insurance","Banking","Insolvency & Bankruptcy","Investments"],a:2,t:"Banking",e:"Under IBC 2016."},
+{q:"MPC members?",o:["4","6","8","10"],a:1,t:"Banking",e:"6 members."},
+{q:"MSF Rate is?",o:["Below Repo","Equal to Repo","Above Repo","Below Reverse Repo"],a:2,t:"Banking",e:"Repo + 0.25%."},
+{q:"Bank Rate for?",o:["Short-term","Long-term lending","Public deposits","Trade"],a:1,t:"Banking",e:"Long-term RBI lending."},
+{q:"OMO means?",o:["RBI buying/selling govt securities","Trading shares","FDI rules","Import/export"],a:0,t:"Banking",e:"Controls money supply."},
+{q:"LAF stands for?",o:["Liquidity Adjustment Facility","Loan Adjustment Fund","Lending Adjustment","Liquidity Assessment"],a:0,t:"Banking",e:"Daily liquidity management."},
+{q:"PMJDY launched?",o:["2012","2014","2016","2018"],a:1,t:"Banking",e:"28 Aug 2014."},
+{q:"MUDRA loan types?",o:["Bronze Silver Gold","Shishu Kishore Tarun","Small Medium Large","Basic Standard Premium"],a:1,t:"Banking",e:"Shishu Kishore Tarun."},
+{q:"PMSBY premium?",o:["₹1","₹12","₹20","₹330"],a:1,t:"Banking",e:"₹12/yr for ₹2L accident cover."},
+{q:"PMJJBY premium?",o:["₹12","₹100","₹436","₹500"],a:2,t:"Banking",e:"₹436/yr for ₹2L life cover."},
+{q:"P Chidambaram presented budgets?",o:["7","8","9","10"],a:2,t:"Budget",e:"9 budgets (2nd highest)."},
+{q:"Pranab Mukherjee budgets?",o:["6","7","8","10"],a:2,t:"Budget",e:"8 budgets."},
+{q:"Nirmala consecutive budgets?",o:["5","6","7","8"],a:2,t:"Budget",e:"7th consecutive budget."},
+{q:"First digital Union Budget?",o:["2019","2020","2021","2022"],a:2,t:"Budget",e:"2021."},
+{q:"First budget date?",o:["15 Aug 1947","26 Nov 1947","26 Jan 1950","1 Apr 1948"],a:1,t:"Budget",e:"26 November 1947."},
+{q:"Budget = Annual Financial Statement under?",o:["Art 110","Art 112","Art 114","Art 280"],a:1,t:"Budget",e:"Article 112."},
+{q:"IGST stands for?",o:["Indian GST","Integrated GST","Interstate GST","International GST"],a:1,t:"GST",e:"Integrated Goods and Services Tax."},
+{q:"UTGST for?",o:["States","Union Territories","Centre","International"],a:1,t:"GST",e:"Union Territory GST."},
+{q:"GST replaces how many taxes?",o:["8","12","17","21"],a:2,t:"GST",e:"17 indirect taxes."},
+{q:"GST destination based means?",o:["Tax at origin","Tax at consumption place","Tax at factory","No location based"],a:1,t:"GST",e:"Tax collected where goods/services consumed."},
+{q:"Art 279A for?",o:["Budget","GST Council","RBI","SEBI"],a:1,t:"GST",e:"Establishes GST Council."},
+{q:"GSTIN first 2 digits?",o:["PAN number","State code","PIN code","Bank code"],a:1,t:"GST",e:"State code."},
+{q:"Stale cheque?",o:["Unsigned","Older than 3 months","Older than 6 months","Post-dated"],a:1,t:"Banking",e:"Valid 3 months."},
+{q:"RBI Deputy Governors?",o:["2","3","4","5"],a:2,t:"Banking",e:"4 Deputy Governors."},
+{q:"Dual GST like?",o:["USA","UK","Canada","France"],a:2,t:"GST",e:"India & Canada."},
+{q:"World Bank HQ?",o:["London","New York","Washington DC","Paris"],a:2,t:"Banking",e:"Washington DC."},
+{q:"NHB stands for?",o:["National Housing Board","National Housing Bank","New Housing Bureau","National Home Bank"],a:1,t:"Banking",e:"Housing finance est. 1988."},
+{q:"First private bank liberalization?",o:["ICICI","HDFC","Axis","Kotak"],a:0,t:"Banking",e:"ICICI Bank 1994."},
+{q:"PFRDA regulates?",o:["Banking","Insurance","Pension","Stocks"],a:2,t:"Banking",e:"National Pension System."},
+{q:"GST 2.0 revenue neutral means?",o:["Increase revenue","No change in total revenue","Decrease revenue","Zero revenue"],a:1,t:"GST2",e:"Total revenue stays same."},
+{q:"Wealth Tax abolished?",o:["Before GST","Under GST","Under Income Tax Act","By SEBI"],a:1,t:"GST",e:"Wealth Tax subsumed."},
+{q:"GSTR-3B used for?",o:["Annual return","Paying GST","Registration","Refund claim"],a:1,t:"GST",e:"Monthly tax payment."},
+{q:"Which PM presented budget?",o:["Nehru","Indira Gandhi","Rajiv Gandhi","All of these"],a:3,t:"Budget",e:"Multiple PMs have presented budgets."}
+];
+var MODE='',QS=[],cur=0,ans=[],bks=[],locked=[],done=0,sec=0,tmrI,learnC=0;
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function startMode(m){MODE=m;document.getElementById('modeBox').style.display='none';document.getElementById('testArea').style.display='block';
+document.getElementById('modeBadge').innerHTML=MODE==='learn'?'<span class="mbadge learn">📚 Learn Mode — Instant Feedback</span>':'<span class="mbadge exam">📝 Exam Mode — 25 Min Timer</span>';
+if(MODE==='exam')document.getElementById('subBtn').style.display='inline-block';else document.getElementById('subBtn').style.display='none';
+init()}
+function init(){QS=shuffle(POOL.slice()).slice(0,30);cur=0;ans=new Array(30).fill(-1);bks=new Array(30).fill(0);locked=new Array(30).fill(0);done=0;sec=0;learnC=0;
+var qb=document.getElementById('qb');qb.innerHTML='';
+QS.forEach(function(q,i){var d=document.createElement('div');d.className='q'+(i===0?' act':'');d.id='q'+i;
+d.innerHTML='<button class="bkb" onclick="tBk('+i+')" id="bk'+i+'">🔖</button><h3>Q'+(i+1)+'/30: '+q.q+'</h3><div class="opts" id="o'+i+'">'+
+q.o.map(function(o,j){return '<label id="l'+i+'_'+j+'" onclick="pk('+i+','+j+')"><input type="radio" name="q'+i+'">'+['A','B','C','D'][j]+') '+o+'</label>'}).join('')+
+'</div><div class="exp" id="e'+i+'">💡 '+q.e+'</div>';qb.appendChild(d)});
+bNav();uPb();
+if(tmrI)clearInterval(tmrI);
+if(MODE==='exam'){sec=0;tmrI=setInterval(function(){sec++;var rem=1500-sec;if(rem<=0){clearInterval(tmrI);sub();return}var m=Math.floor(rem/60),s=rem%60;document.getElementById('tmr').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s},1000);document.getElementById('tmr').textContent='25:00'}
+else{sec=0;tmrI=setInterval(function(){sec++;var m=Math.floor(sec/60),s=sec%60;document.getElementById('tmr').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s},1000);document.getElementById('tmr').textContent='00:00'}
+document.getElementById('res').style.display='none';document.getElementById('qb').style.display='block';document.getElementById('btns').style.display='flex'}
+function bNav(){var n=document.getElementById('nav');n.innerHTML='';
+QS.forEach(function(q,i){var b=document.createElement('div');b.className='nb'+(i===cur?' cur':'')+(bks[i]?' bk':'');b.textContent=i+1;b.onclick=function(){gTo(i)};
+if(MODE==='learn'&&locked[i]){if(ans[i]===QS[i].a)b.className+=' gn';else b.className+=' rd'}
+else if(done){if(ans[i]===QS[i].a)b.className+=' gn';else if(ans[i]>=0)b.className+=' rd'}
+else if(ans[i]>=0)b.className+=' ans';
+n.appendChild(b)})}
+function uPb(){var d=ans.filter(function(a){return a>=0}).length;document.getElementById('pb').style.width=Math.round(d/30*100)+'%'}
+function gTo(i){document.getElementById('q'+cur).classList.remove('act');cur=i;document.getElementById('q'+cur).classList.add('act');bNav()}
+function go(d){var n=cur+d;if(n>=0&&n<30)gTo(n)}
+function pk(qi,oi){if(done)return;if(locked[qi])return;
+ans[qi]=oi;
+if(MODE==='learn'){locked[qi]=1;
+QS[qi].o.forEach(function(o,j){document.getElementById('l'+qi+'_'+j).className='disabled'});
+document.getElementById('l'+qi+'_'+QS[qi].a).className='correct';
+if(oi!==QS[qi].a)document.getElementById('l'+qi+'_'+oi).className='wrong';
+document.getElementById('e'+qi).style.display='block';
+if(oi===QS[qi].a)learnC++;
+bNav();uPb();
+if(locked.every(function(l){return l===1}))finishLearn()}
+else{QS[qi].o.forEach(function(o,j){document.getElementById('l'+qi+'_'+j).className=''});
+document.getElementById('l'+qi+'_'+oi).className='picked';uPb();bNav()}}
+function tBk(i){bks[i]=bks[i]?0:1;document.getElementById('bk'+i).className='bkb'+(bks[i]?' on':'');bNav()}
+function finishLearn(){done=1;clearInterval(tmrI);
+var p=Math.round(learnC/30*100),cl=p>=80?'hi':p>=50?'md':'lo';
+document.getElementById('scr').className='big '+cl;document.getElementById('scr').textContent=p+'%';
+document.getElementById('det').textContent=learnC+'/30 correct | Time: '+document.getElementById('tmr').textContent;
+showWeak();saveRes(p);document.getElementById('res').style.display='block'}
+function sub(){if(done)return;var un=ans.filter(function(a){return a<0}).length;
+if(un>0&&!confirm(un+' unanswered! Submit?'))return;
+done=1;clearInterval(tmrI);var c=0;
+QS.forEach(function(q,i){document.getElementById('l'+i+'_'+q.a).className='correct';
+if(ans[i]>=0&&ans[i]!==q.a)document.getElementById('l'+i+'_'+ans[i]).className='wrong';
+QS[i].o.forEach(function(o,j){var lb=document.getElementById('l'+i+'_'+j);if(!lb.classList.contains('correct')&&!lb.classList.contains('wrong'))lb.className='disabled'});
+document.getElementById('e'+i).style.display='block';
+if(ans[i]===q.a)c++});
+var p=Math.round(c/30*100),cl=p>=80?'hi':p>=50?'md':'lo';
+document.getElementById('scr').className='big '+cl;document.getElementById('scr').textContent=p+'%';
+document.getElementById('det').textContent=c+'/30 correct | Time: '+document.getElementById('tmr').textContent;
+showWeak();saveRes(p);document.getElementById('res').style.display='block';bNav();gTo(0)}
+function showWeak(){var tp={};QS.forEach(function(q,i){if(!tp[q.t])tp[q.t]={c:0,t:0};tp[q.t].t++;if(ans[i]===q.a)tp[q.t].c++});
+var wk=[];Object.keys(tp).forEach(function(t){if(tp[t].c/tp[t].t<0.6)wk.push(t)});
+if(wk.length){document.getElementById('wkB').style.display='block';document.getElementById('wkL').innerHTML=wk.map(function(w){return '<span class="wi">'+w+'</span>'}).join('')}}
+function saveRes(p){var u=localStorage.getItem('_lu')||'guest';
+localStorage.setItem(u+'_sc_'+TN,p+'%');
+var h=JSON.parse(localStorage.getItem(u+'_sh')||'[]');h.push({t:TNM+' ('+MODE+')',s:p+'%',d:new Date().toLocaleDateString()});localStorage.setItem(u+'_sh',JSON.stringify(h));
+var bd=[];QS.forEach(function(q,i){if(bks[i])bd.push({q:q.q,a:q.o[q.a],e:q.e,t:q.t})});
+if(bd.length){var ab=JSON.parse(localStorage.getItem(u+'_bk')||'{}');ab[TN]=bd;localStorage.setItem(u+'_bk',JSON.stringify(ab))}
+var td=JSON.parse(localStorage.getItem(u+'_td')||'[]');if(td.indexOf(TN)<0){td.push(TN);localStorage.setItem(u+'_td',JSON.stringify(td))}}
+function retake(){document.getElementById('testArea').style.display='none';document.getElementById('res').style.display='none';document.getElementById('modeBox').style.display='block'}
+</script></body></html>
+

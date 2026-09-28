@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test B7 – Banking Terms & NPA</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#141e30,#243b55);min-height:100vh;color:#fff;padding:20px}.container{max-width:750px;margin:0 auto}.header{text-align:center;padding:20px;background:rgba(0,0,0,.3);border-radius:16px;margin-bottom:20px;border:1px solid rgba(255,255,255,.1)}.header h1{font-size:1.4em;background:linear-gradient(90deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.header p{color:#aaa;margin-top:5px;font-size:.9em}.progress-container{background:rgba(255,255,255,.1);border-radius:20px;height:10px;margin:20px 0;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(90deg,#667eea,#764ba2);border-radius:20px;transition:width .4s}.stats{display:flex;justify-content:space-between;font-size:.85em;color:#ccc;margin-bottom:15px}.card{background:rgba(0,0,0,.25);border-radius:16px;padding:25px;border:1px solid rgba(255,255,255,.1);margin-bottom:20px}.q-num{font-size:.8em;color:#667eea;font-weight:700;margin-bottom:8px}.q-text{font-size:1.05em;line-height:1.5;margin-bottom:20px}.option{display:block;width:100%;padding:14px 18px;margin:8px 0;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;font-size:.95em;cursor:pointer;text-align:left;transition:all .2s}.option:hover:not(.disabled){background:rgba(255,255,255,.12)}.option.correct{background:rgba(0,200,83,.15);border-color:#00c853;color:#69f0ae}.option.wrong{background:rgba(255,23,68,.15);border-color:#ff1744;color:#ff5252}.option.disabled{cursor:default;opacity:.7}.explanation{margin-top:15px;padding:15px;background:rgba(255,215,0,.08);border-left:3px solid #ffd200;border-radius:0 8px 8px 0;font-size:.9em;color:#ddd;display:none}.btn-row{display:flex;gap:10px;justify-content:center;margin-top:15px}.btn{padding:12px 30px;border:none;border-radius:10px;font-size:.95em;font-weight:600;cursor:pointer}.btn-next{background:linear-gradient(90deg,#667eea,#764ba2);color:#fff}.result-card{text-align:center;padding:40px}.score-circle{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:20px auto;font-size:2em;font-weight:700}.score-good{background:rgba(0,200,83,.15);border:3px solid #00c853;color:#69f0ae}.score-avg{background:rgba(255,215,0,.15);border:3px solid #ffd200;color:#ffd200}.score-low{background:rgba(255,23,68,.15);border:3px solid #ff1744;color:#ff5252}.result-table{width:100%;margin-top:25px;border-collapse:collapse;font-size:.85em}.result-table th{padding:10px;background:rgba(255,255,255,.1);text-align:left}.result-table td{padding:8px 10px}.review-q{padding:15px;margin:10px 0;border-radius:10px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.1)}.review-q.r-correct{border-left:4px solid #00c853}.review-q.r-wrong{border-left:4px solid #ff1744}.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header"><h1>🔐 Test B7 – Banking Terms, NPA & Security</h1><p>Set B • Q181–Q210 of 307</p></div>
+<div id="quiz-area">
+<div class="progress-container"><div class="progress-bar" id="pbar" style="width:0%"></div></div>
+<div class="stats"><span id="qcount">Q 1/30</span><span id="scorecount">Score: 0</span></div>
+<div class="card" id="qcard"></div>
+<div class="btn-row"><button class="btn btn-next hidden" id="nextBtn" onclick="nextQ()">Next →</button></div>
+</div>
+<div id="result-area" class="hidden"></div>
+</div>
+<script>
+const Q=[
+{q:"NPA = loan overdue for:",o:["30 days","60 days","90 days","180 days"],a:2,e:"NPA: interest/principal overdue for 90+ days."},
+{q:"Substandard Asset = NPA for:",o:["< 6 months","< 12 months","> 12 months","> 24 months"],a:1,e:"Substandard = NPA for less than 12 months."},
+{q:"Doubtful Asset = NPA for:",o:["< 6 months","< 12 months","> 12 months","> 24 months"],a:2,e:"Doubtful = NPA for more than 12 months."},
+{q:"NARCL is India's:",o:["Good bank","Bad bank","Central bank","Foreign bank"],a:1,e:"NARCL = 'Bad Bank' for stressed assets."},
+{q:"CRAR stands for:",o:["Capital Reserve Adequacy Ratio","Capital Risk Adequacy Ratio","Capital to Risk-Weighted Assets Ratio","Central Reserve Assets Ratio"],a:2,e:"CRAR = Capital to Risk-Weighted Assets Ratio."},
+{q:"Basel III norms relate to:",o:["GST compliance","Bank capital adequacy and risk","Insurance regulation","Stock market"],a:1,e:"Basel III = bank capital adequacy and risk management."},
+{q:"DRT handles loan recovery above:",o:["Rs 10 lakh","Rs 15 lakh","Rs 20 lakh","Rs 50 lakh"],a:2,e:"DRT for loans above Rs 20 lakh."},
+{q:"'Skimming' in banking is:",o:["Online hacking","Fraudulent device at ATM to steal card data","Phishing emails","Fake currency"],a:1,e:"Skimming = devices that steal card information at ATMs."},
+{q:"Liquidity risk arises from:",o:["Borrower default","Day-to-day cash transaction difficulties","Stock market crash","Currency fluctuation"],a:1,e:"Liquidity risk = difficulty in meeting cash obligations."},
+{q:"Credit risk is:",o:["Liquidity problem","Borrower fails to repay loan","Market crash","Currency risk"],a:1,e:"Credit risk = risk of borrower defaulting."},
+{q:"CBS stands for:",o:["Central Banking System","Core Banking Solution","Computer Banking System","Central Branch System"],a:1,e:"CBS = Core Banking Solution."},
+{q:"'Plastic Money' refers to:",o:["Polymer notes","Credit and debit cards","Digital wallets","Foreign currency"],a:1,e:"Plastic money = credit and debit cards."},
+{q:"ATM stands for:",o:["Any Time Money","Automated Teller Machine","Automatic Transfer Machine","All Time Machine"],a:1,e:"ATM = Automated Teller Machine."},
+{q:"Best ATM/net-banking security practice:",o:["Share PIN with family","Write PIN on card","Change PIN regularly","Use same PIN everywhere"],a:2,e:"Change your PIN regularly for security."},
+{q:"'Collateral' in banking is:",o:["Interest on loan","Asset pledged against a loan","Bank guarantee","Profit margin"],a:1,e:"Collateral = asset pledged as loan security."},
+{q:"KYC stands for:",o:["Know Your Customer","Keep Your Cash","Know Your Credit","Key Your Code"],a:0,e:"KYC = Know Your Customer."},
+{q:"KYC was introduced under:",o:["Banking Regulation Act","FEMA","Prevention of Money Laundering Act","IT Act 2000"],a:2,e:"KYC regulations introduced under PMLA."},
+{q:"PRAN stands for:",o:["Permanent Retirement Account Number","Personal Retirement Account Number","Pension Retirement Account Number","Primary Retirement Account Number"],a:0,e:"PRAN = Permanent Retirement Account Number."},
+{q:"PRAN has how many digits?",o:["10","11","12","16"],a:2,e:"PRAN = 12-digit unique number."},
+{q:"Minimum tenure for Recurring Deposit:",o:["1 month","3 months","6 months","12 months"],a:2,e:"Minimum RD tenure = 6 months."},
+{q:"Senior Citizen Savings Scheme maturity:",o:["3 years","5 years","7 years","10 years"],a:1,e:"SCSS maturity = 5 years."},
+{q:"Gold Monetization Scheme minimum:",o:["10 grams","20 grams","30 grams","50 grams"],a:3,e:"Minimum 50 grams raw gold required."},
+{q:"BSBDA stands for:",o:["Basic Savings Bank Deposit Account","Bank Savings Basic Deposit Account","Basic Standard Banking Deposit Account","Banking Savings Basic Deposit Account"],a:0,e:"BSBDA = Basic Savings Bank Deposit Account."},
+{q:"Current Account is mainly for:",o:["Students","Salaried employees","Businessmen and traders","Senior citizens"],a:2,e:"Current accounts for businessmen/traders."},
+{q:"Which account earns no interest?",o:["Savings","Fixed Deposit","Current Account","Recurring Deposit"],a:2,e:"Current accounts earn no interest."},
+{q:"Banking Regulation Act was passed in:",o:["1934","1949","1955","1969"],a:1,e:"Banking Regulation Act 1949."},
+{q:"Banking falls under which sector?",o:["Primary","Secondary","Tertiary/Service","Quaternary"],a:2,e:"Banking = tertiary (service) sector."},
+{q:"Decimal system of coinage introduced in India:",o:["1947","1950","1957","1960"],a:2,e:"India adopted decimal coinage in 1957."},
+{q:"Oldest joint stock bank in India:",o:["SBI","PNB","Allahabad Bank","Bank of Hindustan"],a:2,e:"Allahabad Bank = oldest joint stock bank."},
+{q:"First bank established in India (1770):",o:["Bank of Calcutta","SBI","Bank of Hindustan","General Bank"],a:2,e:"Bank of Hindustan (1770)."}
+];
+let ci=0,score=0,answered=[];
+function render(){const q=Q[ci];document.getElementById("pbar").style.width=((ci/Q.length)*100)+"%";document.getElementById("qcount").textContent=`Q ${ci+1}/${Q.length}`;document.getElementById("scorecount").textContent=`Score: ${score}`;let h=`<div class="q-num">Q${ci+1}/${Q.length}</div><div class="q-text">${q.q}</div>`;q.o.forEach((o,i)=>{h+=`<button class="option" onclick="pick(${i})">${String.fromCharCode(65+i)}) ${o}</button>`;});h+=`<div class="explanation" id="expl">💡 ${q.e}</div>`;document.getElementById("qcard").innerHTML=h;document.getElementById("nextBtn").classList.add("hidden");}
+function pick(i){if(document.querySelector(".option.disabled"))return;const q=Q[ci];document.querySelectorAll(".option").forEach((b,j)=>{b.classList.add("disabled");if(j===q.a)b.classList.add("correct");if(j===i&&i!==q.a)b.classList.add("wrong");});if(i===q.a)score++;answered.push({qi:ci,sel:i,correct:i===q.a});document.getElementById("expl").style.display="block";document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("scorecount").textContent=`Score: ${score}`;}
+function nextQ(){ci++;if(ci>=Q.length){showResult();return;}render();}
+function showResult(){document.getElementById("quiz-area").classList.add("hidden");const pct=Math.round((score/Q.length)*100);let cls=pct>=80?"score-good":pct>=50?"score-avg":"score-low";let grade=pct>=80?"🏆 Expert":pct>=65?"👍 Intermediate":pct>=50?"📘 Beginner":"🔄 Retry";let h=`<div class="card result-card"><h2>B7

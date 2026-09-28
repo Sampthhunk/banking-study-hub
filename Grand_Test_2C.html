@@ -1,0 +1,159 @@
+
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Grand Test 2C</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:#f5f7fa;padding:8px;max-width:600px;margin:0 auto}#top{background:#1a56db;color:#fff;padding:14px;border-radius:12px;text-align:center;margin-bottom:8px}#top h1{font-size:1.1em}#tmr{font-size:1.3em;font-weight:700;margin:4px 0}#tmr.warn{color:#f87171}#info{font-size:.85em;margin-top:4px}#ctrl{display:flex;gap:6px;justify-content:center;margin-top:6px}#ctrl button{padding:4px 14px;border:none;border-radius:6px;cursor:pointer;font-weight:700;font-size:.78em}#pbtn{background:#fbbf24;color:#1e3a5f}#rbtn{background:#ef4444;color:#fff}#nav{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;margin-bottom:8px}#nav span{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#dbeafe;color:#1a56db;font-size:.68em;cursor:pointer;font-weight:700;border:2px solid transparent;position:relative}#nav span.g{background:#27ae60;color:#fff}#nav span.r{background:#e74c3c;color:#fff}#nav span.cur{border-color:#1a56db}#nav span.bk::after{content:'★';position:absolute;top:-5px;right:-3px;font-size:.5em;color:#f59e0b}.qc{background:#fff;border-radius:10px;margin-bottom:8px;padding:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);display:none}.qc.active{display:block}.qh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.qn{font-weight:700;color:#1e3a5f;font-size:.85em}.tp{font-size:.65em;background:#dbeafe;color:#1a56db;padding:1px 6px;border-radius:10px}.bm{background:none;border:2px solid #dbeafe;border-radius:6px;padding:1px 7px;cursor:pointer;font-size:.95em;color:#94a3b8}.bm.on{color:#f59e0b;border-color:#f59e0b}.opts{display:grid;grid-template-columns:1fr 1fr;gap:5px}.opt{padding:8px;background:#fff;border:2px solid #dbeafe;border-radius:8px;cursor:pointer;font-size:.78em;text-align:center;color:#1e3a5f;transition:.2s}.opt:hover{border-color:#1a56db;background:#eff6ff}.opt.c{background:#d4edda!important;border-color:#27ae60!important;color:#155724!important;font-weight:700}.opt.w{background:#f8d7da!important;border-color:#e74c3c!important;color:#721c24!important}.opt.s{background:#d4edda!important;border-color:#27ae60!important;color:#155724!important}.opt.d{pointer-events:none;opacity:.6}.ex{background:#eff6ff;border-left:3px solid #1a56db;padding:5px 8px;margin-top:6px;font-size:.72em;color:#1e3a5f;display:none;border-radius:0 6px 6px 0}#bar{display:flex;gap:6px;justify-content:center;margin-top:8px}#bar button{padding:7px 16px;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:.8em}#pv{background:#dbeafe;color:#1a56db}#nx{background:#1a56db;color:#fff}#sub{background:#27ae60;color:#fff}#res{display:none;background:#fff;padding:16px;border-radius:12px;margin-top:8px;text-align:center}#res h2{color:#1a56db;font-size:1.1em}#res p{margin:3px 0;color:#1e3a5f;font-size:.85em}.rb{margin-top:8px;padding:7px 16px;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:.82em}.rb1{background:#1a56db;color:#fff}.rb2{background:#dbeafe;color:#1a56db;margin-left:6px}#weak{display:none;background:#fff;padding:12px;border-radius:10px;margin-top:8px}#weak h3{color:#e74c3c;font-size:.9em;margin-bottom:6px}#weak table{width:100%;font-size:.75em;border-collapse:collapse}#weak td,#weak th{padding:4px 6px;border:1px solid #e5e7eb;text-align:left}#weak th{background:#1a56db;color:#fff}#best{background:#eff6ff;padding:8px;border-radius:8px;margin-top:6px;font-size:.8em;color:#1a56db;text-align:center;font-weight:700}#bmlist{display:none;background:#fff;padding:12px;border-radius:10px;margin-top:8px}#bmlist h3{color:#f59e0b;margin-bottom:6px;font-size:.9em}.ft{text-align:center;color:#94a3b8;font-size:.68em;margin-top:10px}#pause{display:none;background:rgba(0,0,0,.7);position:fixed;top:0;left:0;width:100%;height:100%;z-index:99;justify-content:center;align-items:center}#pause div{background:#fff;padding:30px;border-radius:16px;text-align:center}#pause h2{color:#1a56db;margin-bottom:10px}#pause button{padding:10px 30px;background:#1a56db;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer}</style></head><body>
+<div id="top"><h1>🏛️ Grand Test 2C — Culture, Days, Awards & Heads</h1><div id="tmr">⏱️ 20:00</div><div id="info">Score: <span id="sc">0</span>/30 | Q: <span id="qnum">1</span>/30 | 🔖 <span id="bc">0</span></div><div id="ctrl"><button id="pbtn" onclick="togglePause()">⏸️</button><button id="rbtn" onclick="end()">🏁 Submit</button></div></div>
+<div id="nav"></div><div id="qarea"></div>
+<div id="bar"><button id="pv" onclick="go(-1)">◀</button><button id="nx" onclick="go(1)">▶</button><button id="sub" onclick="end()">🏁</button></div>
+<div id="res"><h2>🏆 Done!</h2><p>Score: <span id="fs">0</span>/30 (<span id="fp">0</span>%)</p><p id="grade"></p><div id="best"></div><p>🔖 <span id="fb">0</span></p><button class="rb rb1" onclick="retake()">🔄 New 30</button><button class="rb rb2" onclick="showW()">📉 Weak</button><button class="rb rb2" onclick="showBM()">🔖</button></div>
+<div id="weak"><h3>📉 Weak Areas</h3><table><thead><tr><th>Topic</th><th>✅</th><th>❌</th><th>%</th></tr></thead><tbody id="wtb"></tbody></table></div>
+<div id="bmlist"><h3>🔖 Bookmarked</h3><div id="bmqs"></div></div>
+<div id="pause"><div><h2>⏸️</h2><br><button onclick="togglePause()">▶️ Resume</button></div></div>
+<div class="ft">Pool:160 | Mains 2026</div>
+<script>
+var P=[
+{q:"Khajuraho temples state?",o:["Rajasthan","MP","UP","MH"],a:1,t:"Culture",e:"UNESCO; Chandela dynasty"},
+{q:"Konark Sun Temple?",o:["TN","MH","Odisha","AP"],a:2,t:"Culture",e:"UNESCO; chariot; Narasimhadeva"},
+{q:"Hampi ruins state?",o:["TN","KA","KL","AP"],a:1,t:"Culture",e:"UNESCO; Vijayanagara"},
+{q:"Ajanta Caves state?",o:["KA","MH","MP","Rajasthan"],a:1,t:"Culture",e:"UNESCO; Buddhist paintings"},
+{q:"Ellora Caves state?",o:["KA","MH","MP","Rajasthan"],a:1,t:"Culture",e:"UNESCO; Kailasa temple"},
+{q:"Meenakshi Temple?",o:["Chennai","Madurai TN","Thanjavur","Tirupati"],a:1,t:"Culture",e:"Dravidian; gopurams"},
+{q:"Golden Temple city?",o:["Delhi","Amritsar","Varanasi","Haridwar"],a:1,t:"Culture",e:"Harmandir Sahib; Sikh"},
+{q:"Jagannath Temple?",o:["Varanasi","Tirupati","Puri Odisha","Dwarka"],a:2,t:"Culture",e:"Rath Yatra; Char Dham"},
+{q:"Tirupati Balaji state?",o:["TN","AP","KA","Telangana"],a:1,t:"Culture",e:"Richest temple; Tirumala"},
+{q:"Somnath Temple state?",o:["Rajasthan","Gujarat","MP","MH"],a:1,t:"Culture",e:"1st Jyotirlinga; rebuilt"},
+{q:"Brihadeeswarar Temple?",o:["Madurai","Thanjavur TN","Mamallapuram","Kanchipuram"],a:1,t:"Culture",e:"UNESCO; Chola; Big Temple"},
+{q:"Mamallapuram state?",o:["KA","TN","KL","AP"],a:1,t:"Culture",e:"UNESCO; Pallava; shore temple"},
+{q:"Sanchi Stupa state?",o:["UP","MP","Bihar","Rajasthan"],a:1,t:"Culture",e:"UNESCO; Ashoka; Buddhist"},
+{q:"Bodh Gaya state?",o:["UP","MP","Bihar","Jharkhand"],a:2,t:"Culture",e:"UNESCO; Buddha enlightenment"},
+{q:"Nalanda University state?",o:["UP","Bihar","MP","Rajasthan"],a:1,t:"Culture",e:"UNESCO; ancient; Gupta era"},
+{q:"Qutub Minar city?",o:["Agra","Delhi","Jaipur","Lucknow"],a:1,t:"Culture",e:"UNESCO; Qutb-ud-din; 73m"},
+{q:"Taj Mahal built by?",o:["Akbar","Shah Jahan","Jahangir","Aurangzeb"],a:1,t:"Culture",e:"UNESCO; Agra; Mumtaz"},
+{q:"Red Fort city?",o:["Agra","Delhi","Jaipur","Lahore"],a:1,t:"Culture",e:"UNESCO; Mughal; Independence Day"},
+{q:"Hawa Mahal city?",o:["Delhi","Jaipur Rajasthan","Udaipur","Jodhpur"],a:1,t:"Culture",e:"Palace of Winds; 953 windows"},
+{q:"Mysore Palace state?",o:["TN","KA","KL","AP"],a:1,t:"Culture",e:"Wodeyar; Dasara; Indo-Saracenic"},
+{q:"GI Tag Darjeeling?",o:["Coffee","Tea","Silk","Spice"],a:1,t:"Culture",e:"1st GI India; WB; 2004"},
+{q:"Banarasi Saree from?",o:["Delhi","Varanasi UP","Lucknow","Patna"],a:1,t:"Culture",e:"GI; silk; Mughal era"},
+{q:"Kanchipuram Silk from?",o:["KA","TN","KL","AP"],a:1,t:"Culture",e:"GI; temple city; mulberry"},
+{q:"Pashmina from?",o:["Rajasthan","J&K Kashmir","HP","UK"],a:1,t:"Culture",e:"GI; Changthang goat; fine wool"},
+{q:"Madhubani painting?",o:["Rajasthan","Bihar","MP","WB"],a:1,t:"Culture",e:"Mithila; women artists; natural dyes"},
+{q:"Warli painting?",o:["Rajasthan","MH","Gujarat","MP"],a:1,t:"Culture",e:"Tribal; geometric; Maharashtra"},
+{q:"Pattachitra painting?",o:["WB","Odisha","Bihar","Assam"],a:1,t:"Culture",e:"Cloth-based; mythological"},
+{q:"Kathakali dance from?",o:["TN","KA","Kerala","AP"],a:2,t:"Culture",e:"Classical; elaborate makeup"},
+{q:"Bharatanatyam from?",o:["Kerala","Tamil Nadu","KA","AP"],a:1,t:"Culture",e:"Oldest classical dance"},
+{q:"Kuchipudi from?",o:["TN","KA","KL","AP"],a:3,t:"Culture",e:"Krishna district; Andhra Pradesh"},
+{q:"Odissi from?",o:["WB","Bihar","Odisha","Assam"],a:2,t:"Culture",e:"Temple dance; Konark"},
+{q:"Manipuri dance?",o:["Assam","Manipur","Nagaland","Mizoram"],a:1,t:"Culture",e:"Raas Leela; Vaishnavism"},
+{q:"Mohiniattam from?",o:["TN","KA","Kerala","AP"],a:2,t:"Culture",e:"Enchantress dance; Lasya"},
+{q:"Sattriya from?",o:["WB","Bihar","Assam","Manipur"],a:2,t:"Culture",e:"Neo-Vaishnavite; Sankaradeva"},
+{q:"Kathak from?",o:["South","North India","East","NE"],a:1,t:"Culture",e:"Storytelling; Mughal era; Lucknow"},
+{q:"Bihu dance from?",o:["WB","Assam","Manipur","Nagaland"],a:1,t:"Culture",e:"Harvest; Bohag Bihu"},
+{q:"Garba dance from?",o:["Rajasthan","Gujarat","MH","MP"],a:1,t:"Culture",e:"Navratri; UNESCO 2023"},
+{q:"Bhangra from?",o:["Rajasthan","Gujarat","Punjab","Haryana"],a:2,t:"Culture",e:"Harvest; Baisakhi; energetic"},
+{q:"Chhau dance from?",o:["WB-Jharkhand-Odisha","TN","KA","Rajasthan"],a:0,t:"Culture",e:"UNESCO; martial; masks"},
+{q:"Ghoomar from?",o:["Gujarat","Rajasthan","Punjab","MP"],a:1,t:"Culture",e:"Rajput women; twirling"},
+{q:"World Wetlands Day?",o:["Jan 2","Feb 2","Mar 2","Apr 2"],a:1,t:"Days",e:"Ramsar Convention 1971"},
+{q:"Intl Women's Day?",o:["Mar 8","Apr 8","May 8","Jun 8"],a:0,t:"Days",e:"Gender equality; UN"},
+{q:"World Forestry Day?",o:["Mar 21","Apr 21","May 21","Jun 21"],a:0,t:"Days",e:"Equinox; FAO"},
+{q:"World TB Day?",o:["Mar 24","Apr 24","May 24","Jun 24"],a:0,t:"Days",e:"Koch discovered 1882"},
+{q:"World Malaria Day?",o:["Apr 5","Apr 15","Apr 25","May 5"],a:2,t:"Days",e:"WHO; mosquito; prevention"},
+{q:"World Press Freedom?",o:["Apr 3","May 3","Jun 3","Jul 3"],a:1,t:"Days",e:"UNESCO; journalism"},
+{q:"World No Tobacco Day?",o:["May 11","May 21","May 31","Jun 11"],a:2,t:"Days",e:"WHO; smoking cessation"},
+{q:"World Refugee Day?",o:["Jun 10","Jun 20","Jul 10","Jul 20"],a:1,t:"Days",e:"UNHCR; displacement"},
+{q:"World Population Day?",o:["Jul 1","Jul 11","Jul 21","Jul 31"],a:1,t:"Days",e:"UNFPA; 5 billion 1987"},
+{q:"Intl Peace Day?",o:["Sep 1","Sep 11","Sep 21","Oct 1"],a:2,t:"Days",e:"UN General Assembly"},
+{q:"World Food Day?",o:["Oct 6","Oct 16","Oct 26","Nov 6"],a:1,t:"Days",e:"FAO est 1945"},
+{q:"World Soil Day?",o:["Nov 5","Dec 5","Jan 5","Feb 5"],a:1,t:"Days",e:"FAO; soil health"},
+{q:"Human Rights Day?",o:["Nov 10","Dec 10","Jan 10","Feb 10"],a:1,t:"Days",e:"UDHR 1948; UN"},
+{q:"Good Governance Day?",o:["Dec 15","Dec 25","Jan 25","Feb 25"],a:1,t:"Days",e:"Vajpayee bday; India"},
+{q:"Voters Day India?",o:["Jan 15","Jan 25","Feb 15","Mar 25"],a:1,t:"Days",e:"ECI est 1950; NVD"},
+{q:"National Girl Child Day?",o:["Jan 14","Jan 24","Feb 14","Mar 24"],a:1,t:"Days",e:"Beti Bachao; gender"},
+{q:"Martyrs Day India?",o:["Jan 26","Jan 30","Mar 23","Aug 15"],a:1,t:"Days",e:"Gandhi assassination; 1948"},
+{q:"National Youth Day?",o:["Jan 12","Jan 22","Feb 12","Mar 12"],a:0,t:"Days",e:"Vivekananda bday"},
+{q:"World Cancer Day?",o:["Jan 4","Feb 4","Mar 4","Apr 4"],a:1,t:"Days",e:"UICC; awareness"},
+{q:"Safer Internet Day?",o:["Jan 2nd Tue","Feb 2nd Tue","Mar 1st","Apr 1st"],a:1,t:"Days",e:"EU initiated; online safety"},
+{q:"Abel Prize for?",o:["Physics","Mathematics","Chemistry","Literature"],a:1,t:"Awards",e:"Norwegian; like Nobel for Math"},
+{q:"Fields Medal for?",o:["Physics","Mathematics under 40","Chemistry","Peace"],a:1,t:"Awards",e:"Every 4 years; ICM"},
+{q:"Pulitzer Prize for?",o:["Science","Journalism & Literature","Sports","Film"],a:1,t:"Awards",e:"US; Columbia; since 1917"},
+{q:"Man Booker Prize for?",o:["Science","English fiction","Sports","Film"],a:1,t:"Awards",e:"UK; novel; annual"},
+{q:"Ramon Magsaysay Award?",o:["European","Asian Nobel","American","African"],a:1,t:"Awards",e:"Manila; public service; Asia"},
+{q:"Grammy for?",o:["Film","Music","Literature","Science"],a:1,t:"Awards",e:"Recording Academy; US"},
+{q:"Oscar for?",o:["Music","Film/Cinema","Literature","Science"],a:1,t:"Awards",e:"Academy Awards; Hollywood"},
+{q:"Nobel Prize categories?",o:["5","6","7","8"],a:1,t:"Awards",e:"Physics Chem Med Lit Peace Econ"},
+{q:"Nobel Peace Prize city?",o:["Stockholm","Oslo Norway","Geneva","NYC"],a:1,t:"Awards",e:"Norwegian Nobel Committee"},
+{q:"Other Nobels awarded in?",o:["Oslo","Stockholm Sweden","Geneva","London"],a:1,t:"Awards",e:"Swedish Academy; Dec 10"},
+{q:"Pritzker Prize for?",o:["Literature","Architecture","Music","Film"],a:1,t:"Awards",e:"$100K; Hyatt Foundation"},
+{q:"Templeton Prize for?",o:["Science","Spiritual progress","Sports","Film"],a:1,t:"Awards",e:"UK; £1.1M; religion"},
+{q:"Turing Award for?",o:["Physics","Computer Science","Chemistry","Math"],a:1,t:"Awards",e:"ACM; Nobel of Computing"},
+{q:"World Food Prize for?",o:["Cooking","Food/agriculture advancement","Sports","Film"],a:1,t:"Awards",e:"Norman Borlaug; Des Moines"},
+{q:"Indira Gandhi Peace Prize?",o:["Sports","International peace","Science","Film"],a:1,t:"Awards",e:"India; since 1986; ₹25L"},
+{q:"Gandhi Peace Prize?",o:["Sports","Social/economic/political","Science","Film"],a:1,t:"Awards",e:"Govt India; since 1995; ₹1Cr"},
+{q:"Gallantry awards — highest wartime?",o:["Ashoka","Param Vir Chakra","Maha Vir","Vir Chakra"],a:1,t:"Awards",e:"PVC; 21 recipients"},
+{q:"Maha Vir Chakra?",o:["1st wartime","2nd wartime gallantry","3rd","Peacetime"],a:1,t:"Awards",e:"After PVC; conspicuous"},
+{q:"Shaurya Chakra?",o:["1st peacetime","2nd peacetime","3rd peacetime gallantry","Wartime"],a:2,t:"Awards",e:"After Kirti Chakra"},
+{q:"IMF Managing Director?",o:["Lagarde","Kristalina Georgieva","Yellen","Powell"],a:1,t:"Heads",e:"Bulgarian; since 2019"},
+{q:"World Bank Group includes?",o:["3 orgs","5 institutions","7 orgs","10 orgs"],a:1,t:"Heads",e:"IBRD IDA IFC MIGA ICSID"},
+{q:"WTO DG?",o:["Okonjo","Ngozi Okonjo-Iweala","Azevedo","Lamy"],a:1,t:"Heads",e:"Nigerian; 1st woman; 1st African"},
+{q:"WHO SEARO India rep?",o:["Tedros","Saima Wazed","Poonam Singh","Soumya"],a:1,t:"Heads",e:"SE Asia Regional; Bangladesh"},
+{q:"ISRO Chairman?",o:["Sivan","Somanath","V Narayanan","Kalam"],a:2,t:"Heads",e:"Since Jan 2025"},
+{q:"DRDO Chairman?",o:["Samir Kamat","Avinash Chander","G Satheesh","V Narayanan"],a:0,t:"Heads",e:"Scientific Adviser to RM"},
+{q:"NITI Aayog CEO?",o:["Amitabh Kant","BVR Subrahmanyam","Parameswaran Iyer","Rajiv Kumar"],a:1,t:"Heads",e:"IAS; policy think tank"},
+{q:"CEC India 2026?",o:["Rajiv Kumar","Gyanesh Kumar","Anup Pandey","Sushil"],a:1,t:"Heads",e:"Chief Election Commissioner"},
+{q:"CAG India?",o:["Rajiv Mehrishi","GC Murmu","K Sanjay Murthy","Vinod Rai"],a:2,t:"Heads",e:"Comptroller Auditor General"},
+{q:"Attorney General?",o:["KK Venugopal","R Venkataramani","Mukul Rohatgi","Soli Sorabjee"],a:1,t:"Heads",e:"Art 76; legal adviser to Govt"},
+{q:"Solicitor General?",o:["Tushar Mehta","Ranjit Kumar","Harish Salve","Gopal"],a:0,t:"Heads",e:"2nd law officer; assisting AG"},
+{q:"Vice President India?",o:["Venkaiah","Jagdeep Dhankhar","Hamid Ansari","Bhairon"],a:1,t:"Heads",e:"Rajya Sabha Chairman; since 2022"},
+{q:"Lok Sabha Speaker?",o:["Om Birla","Sumitra Mahajan","Meira Kumar","Somnath"],a:0,t:"Heads",e:"Pro-tem first; 18th LS"},
+{q:"Defence Minister?",o:["Rajnath Singh","Nirmala","Parrikar","AK Antony"],a:0,t:"Heads",e:"Since 2019; BJP"},
+{q:"Home Minister?",o:["Rajnath","Amit Shah","Chidambaram","Shinde"],a:1,t:"Heads",e:"Since 2019; MHA"},
+{q:"Finance Minister?",o:["Jaitley","Nirmala Sitharaman","Pranab","Chidambaram"],a:1,t:"Heads",e:"Since 2019; 1st woman full-time FM"},
+{q:"External Affairs Minister?",o:["Sushma","S Jaishankar","Salman Khurshid","SM Krishna"],a:1,t:"Heads",e:"Former FS; IFS; since 2019"},
+{q:"Education Minister?",o:["Smriti","Dharmendra Pradhan","Javadekar","Pokhriyal"],a:1,t:"Heads",e:"NEP 2020 implementation"},
+{q:"SEBI Chairman?",o:["Madhabi Buch","Ajay Tyagi","Tuhin Kanta Pandey","UK Sinha"],a:2,t:"Heads",e:"Since 2025; IAS"},
+{q:"LIC Chairman?",o:["MR Kumar","Siddhartha Mohanty","SC Kalia","VK Sharma"],a:1,t:"Heads",e:"Life Insurance Corp"},
+{q:"SBI Chairman?",o:["Rajnish Kumar","Dinesh Khara","CS Setty","Arundhati"],a:2,t:"Heads",e:"Since Aug 2024; largest PSB"},
+{q:"NABARD Chairman?",o:["Harsh Kumar Bhanwala","GR Chintala","Shaji KV","KV Shaji"],a:3,t:"Heads",e:"Agri rural development bank"},
+{q:"SIDBI Chairman?",o:["Mohammad Mustafa","S Ramann","Manoj Mittal","Prakash Kumar"],a:2,t:"Heads",e:"Small Industries Dev Bank"},
+{q:"NDB President?",o:["KV Kamath","Marcos Troyjo","Dilma Rousseff","Leslie Maasdorp"],a:2,t:"Heads",e:"BRICS bank; former Brazil pres"},
+{q:"ADB President?",o:["Takehiko Nakao","Masatsugu Asakawa","Haruhiko Kuroda","Jin Liqun"],a:1,t:"Heads",e:"Japanese; Manila; Asian Dev"},
+{q:"AIIB President?",o:["Jim Kim","Jin Liqun","KV Kamath","Christine"],a:1,t:"Heads",e:"Asian Infra Investment Bank; Beijing"},
+{q:"Interpol President?",o:["Indian","UAE Ahmed Al Raisi","French","British"],a:1,t:"Heads",e:"Emirati; since 2021"},
+{q:"UNESCO India sites total?",o:["35","40","42","45"],a:2,t:"Heads",e:"~42; cultural+natural+mixed"},
+{q:"Intangible heritage India?",o:["10","14","15","18"],a:2,t:"Heads",e:"UNESCO; Yoga Kumbh Garba etc"},
+{q:"Ramsar Sites — most state?",o:["UP","Rajasthan","TN","MP"],a:2,t:"Heads",e:"Tamil Nadu; wetlands"},
+{q:"World Heritage City India?",o:["Delhi","Ahmedabad","Jaipur","Both B&C"],a:3,t:"Heads",e:"Ahmedabad 2017 + Jaipur 2019"},
+{q:"Creative City UNESCO India?",o:["Varanasi Music","Jaipur Crafts","Hyderabad Gastronomy","All"],a:3,t:"Heads",e:"Multiple Indian cities"},
+{q:"Statue of Unity height?",o:["152m","182m","212m","240m"],a:1,t:"Culture",e:"Tallest; Sardar Patel; Gujarat"},
+{q:"Statue of Unity architect?",o:["Zaha Hadid","Ram Sutar","Laurie Baker","BV Doshi"],a:1,t:"Culture",e:"Ram V Sutar; bronze"},
+{q:"India Gate purpose?",o:["Victory","WW1 memorial","Parliament","Museum"],a:1,t:"Culture",e:"Delhi; 13,516 soldiers; Lutyens"},
+{q:"Gateway of India city?",o:["Delhi","Mumbai","Chennai","Kolkata"],a:1,t:"Culture",e:"1924; George V visit; harbour"},
+{q:"Victoria Memorial city?",o:["Delhi","Mumbai","Kolkata","Chennai"],a:2,t:"Culture",e:"1921; Queen Victoria; marble"},
+{q:"Char Minar city?",o:["Delhi","Hyderabad","Mumbai","Ahmedabad"],a:1,t:"Culture",e:"1591; Quli Qutb Shah; 4 minarets"},
+{q:"Howrah Bridge city?",o:["Delhi","Mumbai","Kolkata","Chennai"],a:2,t:"Culture",e:"Cantilever; Hooghly; Rabindra Setu"},
+{q:"Cellular Jail?",o:["Mumbai","Delhi","Port Blair","Kolkata"],a:2,t:"Culture",e:"Kala Pani; freedom fighters"},
+{q:"Amer Fort city?",o:["Udaipur","Jaipur","Jodhpur","Jaisalmer"],a:1,t:"Culture",e:"Rajput; Sheesh Mahal; hilltop"},
+{q:"Golconda Fort city?",o:["Mumbai","Hyderabad","Chennai","Bangalore"],a:1,t:"Culture",e:"Diamond trade; acoustics; Qutb Shahi"},
+{q:"World Happiness Report by?",o:["IMF","UN SDSN","World Bank","WHO"],a:1,t:"Heads",e:"Finland usually #1"},
+{q:"Ease of Doing Business by?",o:["IMF","World Bank (discontinued)","WTO","UN"],a:1,t:"Heads",e:"B-READY replaced; 2024"},
+{q:"Gender Gap Report by?",o:["UN Women","WEF","World Bank","IMF"],a:1,t:"Heads",e:"World Economic Forum; Iceland #1"},
+{q:"Global Peace Index by?",o:["UN","IEP","WEF","Amnesty"],a:1,t:"Heads",e:"Inst Economics Peace; Iceland #1"},
+{q:"Environmental Performance?",o:["UN","Yale-Columbia EPI","WHO","WWF"],a:1,t:"Heads",e:"180 countries; biennial"},
+{q:"Henley Passport Index?",o:["UN","Henley & Partners","WEF","IMF"],a:1,t:"Heads",e:"Visa-free access; global ranking"},
+{q:"Press Freedom Index?",o:["UN","RSF","WEF","Amnesty"],a:1,t:"Heads",e:"Reporters Without Borders; Paris"},
+{q:"World Competitiveness?",o:["WEF","IMD","World Bank","UN"],a:1,t:"Heads",e:"IMD Business School; Lausanne"}
+];
+var Q,cur=0,sc=0,ans,bk,timer,sec=1200,paused=false,best=+localStorage.getItem('gt2c')||0;
+function sh(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function fmt(s){var m=Math.floor(s/60),ss=s%60;return(m<10?'0':'')+m+':'+(ss<10?'0':'')+ss}
+function startT(){clearInterval(timer);sec=1200;document.getElementById('tmr').classList.remove('warn');timer=setInterval(function(){if(!paused){sec--;document.getElementById('tmr').textContent='⏱️ '+fmt(sec);if(sec<=120)document.getElementById('tmr').classList.add('warn');if(sec<=0){clearInterval(timer);end()}}},1000)}
+function togglePause(){paused=!paused;document.getElementById('pause').style.display=paused?'flex':'none'}
+function init(){Q=sh(P.slice()).slice(0,30);cur=0;sc=0;ans=new Array(30).fill(-1);bk=new Array(30).fill(false);var n=document.getElementById('nav');n.innerHTML='';var a=document.getElementById('qarea');a.innerHTML='';document.getElementById('res').style.display='none';document.getElementById('weak').style.display='none';document.getElementById('bmlist').style.display='none';document.getElementById('sc').textContent='0';document.getElementById('bc').textContent='0';for(var i=0;i<30;i++){var s=document.createElement('span');s.textContent=i+1;s.onclick=(function(x){return function(){cur=x;show()}})(i);n.appendChild(s);var d=document.createElement('div');d.className='qc';d.id='q'+i;var h='<div class="qh"><div><span class="qn">Q'+(i+1)+'.</span> <span class="tp">'+Q[i].t+'</span></div><button class="bm" onclick="togBM('+i+')" id="bm'+i+'">☆</button></div><div class="qn" style="margin-bottom:8px">'+Q[i].q+'</div><div class="opts">';for(var j=0;j<4;j++)h+='<div class="opt" onclick="pk('+i+','+j+')">'+String.fromCharCode(65+j)+') '+Q[i].o[j]+'</div>';h+='</div><div class="ex" id="ex'+i+'">💡 '+Q[i].e+'</div>';d.innerHTML=h;a.appendChild(d)}show();startT();document.getElementById('best').textContent='🏅 Best:'+best+'/30'}
+function show(){document.querySelectorAll('.qc').forEach(function(e){e.classList.remove('active')});document.getElementById('q'+cur).classList.add('active');document.getElementById('qnum').textContent=cur+1;var ns=document.getElementById('nav').children;for(var i=0;i<ns.length;i++){ns[i].classList.remove('cur');if(i===cur)ns[i].classList.add('cur')}}
+function togBM(i){bk[i]=!bk[i];document.getElementById('bm'+i).textContent=bk[i]?'★':'☆';document.getElementById('bm'+i).classList.toggle('on',bk[i]);document.getElementById('nav').children[i].classList.toggle('bk',bk[i]);document.getElementById('bc').textContent=bk.filter(Boolean).length}
+function pk(qi,oi){if(ans[qi]>=0)return;ans[qi]=oi;var opts=document.getElementById('q'+qi).querySelectorAll('.opt');for(var j=0;j<opts.length;j++)opts[j].classList.add('d');if(oi===Q[qi].a){opts[oi].classList.add('c');sc++;document.getElementById('nav').children[qi].classList.add('g')}else{opts[oi].classList.add('w');opts[Q[qi].a].classList.add('s');document.getElementById('nav').children[qi].classList.add('r')}document.getElementById('ex'+qi).style.display='block';document.getElementById('sc').textContent=sc}
+function go(d){cur+=d;if(cur<0)cur=0;if(cur>=30)cur=29;show()}
+function end(){clearInterval(timer);for(var i=0;i<30;i++){if(ans[i]<0){ans[i]=-2;var o=document.getElementById('q'+i).querySelectorAll('.opt');for(var j=0;j<o.length;j++)o[j].classList.add('d');o[Q[i].a].classList.add('s');document.getElementById('ex'+i).style.display='block';document.getElementById('nav').children[i].classList.add('r')}}if(sc>best){best=sc;localStorage.setItem('gt2c',best)}document.getElementById('res').style.display='block';document.getElementById('fs').textContent=sc;var p=Math.round(sc/30*100);document.getElementById('fp').textContent=p;document.getElementById('grade').textContent=p>=80?'🌟 Expert!':p>=65?'👍 Good!':'📚 Practice!';document.getElementById('fb').textContent=bk.filter(Boolean).length;document.getElementById('best').textContent='🏅 Best:'+best+'/30'}
+function retake(){init()}
+function showW(){var tp={};for(var i=0;i<30;i++){var t=Q[i].t;if(!tp[t])tp[t]={r:0,w:0};if(ans[i]>=0&&ans[i]===Q[i].a)tp[t].r++;else tp[t].w++}var tb=document.getElementById('wtb');tb.innerHTML='';var ts=Object.keys(tp).sort(function(a,b){return tp[a].r/(tp[a].r+tp[a].w)-tp[b].r/(tp[b].r+tp[b].w)});for(var k=0;k<ts.length;k++){var t=ts[k],d=tp[t],pc=Math.round(d.r/(d.r+d.w)*100);tb.innerHTML+='<tr><td>'+t+'</td><td style="color:#27ae60;font-weight:700">'+d.r+'</td><td style="color:#e74c3c;font-weight:700">'+d.w+'</td><td style="font-weight:700;color:'+(pc>=80?'#27ae60':pc>=60?'#f59e0b':'#e74c3c')+'">'+pc+'%</td></tr>'}document.getElementById('weak').style.display='block'}
+function showBM(){var qs=document.getElementById('bmqs');qs.innerHTML='';var f=0;for(var i=0;i<30;i++){if(bk[i]){f=1;qs.innerHTML+='<div style="background:#eff6ff;border-left:3px solid #1a56db;padding:6px;margin:3px 0;font-size:.78em"><b>Q'+(i+1)+'.</b> '+Q[i].q+'<br><span style="color:#27ae60">✅ '+String.fromCharCode(65+Q[i].a)+') '+Q[i].o[Q[i].a]+'</span><br><span style="color:#1a56db">💡 '+Q[i].e+'</span></div>'}}if(!f)qs.innerHTML='<p style="color:#94a3b8">No bookmarks</p>';document.getElementById('bmlist').style.display='block'}
+init();
+</script></body></html>
+

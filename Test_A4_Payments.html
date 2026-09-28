@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test A4 - Acts, Schemes & Nationalization</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:#0a1628;color:#e0e0e0;min-height:100vh}.hd{background:linear-gradient(135deg,#1a237e,#0d47a1);padding:15px;text-align:center;border-bottom:3px solid #ffd740}.hd h1{color:#fff;font-size:1.3em}.hd p{color:#ffd740;font-size:0.85em;margin-top:4px}.bx{max-width:750px;margin:10px auto;padding:0 10px}.sc{background:#1a2744;border-radius:10px;padding:12px;margin:8px 0;text-align:center}.sc .bg{font-size:2em;color:#ffd740;font-weight:bold}.qc{background:#1a2744;border-radius:10px;padding:15px;margin:10px 0;border-left:4px solid #ff7043}.qn{color:#ffd740;font-size:0.8em;margin-bottom:5px}.qt{color:#e0e0e0;font-size:0.95em;margin-bottom:10px;line-height:1.4}.ob{display:block;width:100%;padding:10px;margin:4px 0;background:#0d1b2a;border:1px solid #263238;border-radius:8px;color:#b0bec5;cursor:pointer;text-align:left;font-size:0.88em;transition:0.2s}.ob:hover{background:#1e3a5f;border-color:#42a5f5}.ob.c{background:#1b5e20;border-color:#4caf50;color:#fff}.ob.w{background:#b71c1c;border-color:#f44336;color:#fff}.ob.sh{background:#1b5e20;border-color:#4caf50;color:#fff}.ex{display:none;background:#0d2137;padding:10px;border-radius:6px;margin-top:8px;font-size:0.82em;color:#90caf9;border-left:3px solid #ffd740}.bm{float:right;background:none;border:none;color:#546e7a;cursor:pointer;font-size:1.1em}.bm.a{color:#ffd740}.tb{display:flex;gap:8px;justify-content:center;margin:10px 0;flex-wrap:wrap}.hl{display:inline-block;padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:bold;font-size:0.85em;cursor:pointer;border:none;transition:0.3s}.h1{background:#ffd740;color:#1a237e}.h2{background:#42a5f5;color:#fff}.h3{background:#ff7043;color:#fff}.ft{text-align:center;padding:12px;color:#546e7a;font-size:0.7em;margin-top:15px;border-top:1px solid #1a2744}
+</style>
+</head>
+<body>
+<div class="hd"><h1>📘 Test A4 — Acts, Schemes & Nationalization</h1><p>Static Banking Awareness | 30 MCQs | Set A</p></div>
+<div class="bx">
+<div class="sc"><div class="bg" id="score">0/30</div><p>Score | <span id="pct">0%</span></p></div>
+<div class="tb"><button class="hl h2" onclick="shuffle()">🔀 Shuffle</button><button class="hl h3" onclick="showBk()">🔖 Bookmarked</button><a href="index.html" class="hl h1">🏠 Dashboard</a></div>
+<div id="qA"></div>
+</div>
+<div class="ft">Banking Study Hub | Sampath Kumar | Set A: Test 4 of 6</div>
+<script>
+var qs=[
+{q:"Banking Regulation Act was enacted in:",o:["1934","1949","1955","1969"],a:1,e:"Banking Regulation Act was enacted in 1949."},
+{q:"SARFAESI Act was enacted in:",o:["1999","2000","2002","2004"],a:2,e:"SARFAESI Act enacted in 2002 for recovery of NPAs."},
+{q:"FEMA replaced which act?",o:["PMLA","FERA","IBC","Banking Companies Act"],a:1,e:"FEMA (1999) replaced FERA."},
+{q:"IBC was enacted in:",o:["2014","2015","2016","2017"],a:2,e:"IBC enacted in 2016 for time-bound resolution of insolvency."},
+{q:"PMLA stands for:",o:["Prevention of Money Laundering Act","Protection of Money Lending Act","Prevention of Market Liquidation Act","Public Money Lending Act"],a:0,e:"PMLA = Prevention of Money Laundering Act, 2002."},
+{q:"Narasimham Committee I (1991) recommended:",o:["GST implementation","Banking sector reforms","Insurance regulation","Foreign trade policy"],a:1,e:"Narasimham Committee I recommended banking sector reforms."},
+{q:"Urjit Patel Committee recommended:",o:["Banking reforms","Financial inclusion","Inflation targeting framework","NPA resolution"],a:2,e:"Urjit Patel Committee recommended inflation targeting framework."},
+{q:"Raghuram Rajan Committee focused on:",o:["Monetary policy","Financial inclusion","Tax reforms","Banking regulation"],a:1,e:"Raghuram Rajan Committee focused on financial inclusion."},
+{q:"Kelkar Committee dealt with:",o:["Banking reforms","Tax reforms and fiscal consolidation","Insurance regulation","NPA management"],a:1,e:"Kelkar Committee focused on tax reforms."},
+{q:"Tandon Committee introduced:",o:["Capital adequacy norms","Working capital finance norms (MPBF)","Priority sector lending","Financial inclusion"],a:1,e:"Tandon Committee introduced MPBF."},
+{q:"PM Jan Dhan Yojana was launched on:",o:["15 August 2014","28 August 2014","2 October 2014","9 May 2015"],a:1,e:"PMJDY launched on 28 August 2014."},
+{q:"PMJDY provides accident insurance of:",o:["Rs 1 lakh","Rs 2 lakh","Rs 5 lakh","Rs 10 lakh"],a:1,e:"PMJDY provides Rs 2 lakh accident insurance via RuPay card."},
+{q:"PM Suraksha Bima Yojana annual premium is:",o:["Rs 12","Rs 20","Rs 330","Rs 436"],a:1,e:"PMSBY annual premium is Rs 20/year."},
+{q:"PM Jeevan Jyoti Bima Yojana annual premium is:",o:["Rs 12","Rs 20","Rs 330","Rs 436"],a:3,e:"PMJJBY annual premium is Rs 436/year."},
+{q:"Atal Pension Yojana provides pension after age:",o:["55","58","60","65"],a:2,e:"APY provides pension after age 60."},
+{q:"APY age group eligibility is:",o:["18-40","18-50","18-60","21-65"],a:0,e:"APY is for 18-40 age group."},
+{q:"MUDRA Shishu category provides loans up to:",o:["Rs 10000","Rs 50000","Rs 5 lakh","Rs 10 lakh"],a:1,e:"Shishu category = up to Rs 50,000."},
+{q:"Stand Up India provides loans for:",o:["All entrepreneurs","SC/ST/Women entrepreneurs","Farmers only","Government employees"],a:1,e:"Stand Up India: Rs 10 lakh-1 crore for SC/ST/Women entrepreneurs."},
+{q:"How many banks were nationalized in 1969?",o:["6","10","14","20"],a:2,e:"14 banks nationalized on 19 July 1969."},
+{q:"Who was PM during first bank nationalization?",o:["Jawaharlal Nehru","Lal Bahadur Shastri","Indira Gandhi","Morarji Desai"],a:2,e:"Indira Gandhi was PM during 1969 and 1980 nationalizations."},
+{q:"How many banks were nationalized in 1980?",o:["4","6","8","10"],a:1,e:"6 more banks nationalized on 15 April 1980."},
+{q:"Banks with deposits above how much were nationalized in 1969?",o:["Rs 10 crore","Rs 25 crore","Rs 50 crore","Rs 100 crore"],a:2,e:"Banks with deposits above Rs 50 crore nationalized in 1969."},
+{q:"Imperial Bank became SBI under which Act?",o:["RBI Act 1934","Banking Regulation Act 1949","SBI Act 1955","Companies Act 1956"],a:2,e:"Imperial Bank became SBI under SBI Act, 1955."},
+{q:"Current Account earns:",o:["Higher interest than savings","Same interest as savings","Lower interest","No interest"],a:3,e:"Current accounts earn no interest."},
+{q:"BSBDA requires minimum balance of:",o:["Rs 500","Rs 1000","Rs 5000","Zero/Nil"],a:3,e:"BSBDA requires zero minimum balance."},
+{q:"NRE Account is:",o:["Non-repatriable","Fully repatriable","Partially repatriable","Only for domestic use"],a:1,e:"NRE Account is fully repatriable, maintained in INR."},
+{q:"Demat Account is managed by:",o:["RBI and SEBI","NSDL and CDSL","NPCI and BBPS","SBI and PNB"],a:1,e:"Demat accounts managed by NSDL and CDSL."},
+{q:"IMF is headquartered in:",o:["Geneva","New York","Washington D.C.","London"],a:2,e:"IMF headquartered in Washington D.C., USA."},
+{q:"World Bank President is:",o:["Kristalina Georgieva","Ajay Banga","Jim Yong Kim","David Malpass"],a:1,e:"Ajay Banga is the World Bank President."},
+{q:"NDB is also known as:",o:["World Bank","BRICS Bank","Asian Bank","IMF Bank"],a:1,e:"NDB is the BRICS Bank, HQ Shanghai."}
+];
+var ans={},bk={},tot=qs.length,cor=0;
+function render(list){var h='';list.forEach(function(q){var i=qs.indexOf(q);h+='<div class="qc" id="q'+i+'"><button class="bm'+(bk[i]?' a':'')+'" onclick="tBk('+i+')">🔖</button><div class="qn">Q'+(i+1)+'/'+tot+'</div><div class="qt">'+q.q+'</div>';q.o.forEach(function(o,j){h+='<button class="ob" id="o'+i+'_'+j+'" onclick="chk('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>';});h+='<div class="ex" id="ex'+i+'">💡 '+q.e+'</div></div>';});document.getElementById('qA').innerHTML=h;for(var k in ans){var i=+k,a=ans[k];document.querySelectorAll('#q'+i+' .ob').forEach(function(b){b.style.pointerEvents='none';});document.getElementById('o'+i+'_'+a).classList.add(a===qs[i].a?'c':'w');document.getElementById('o'+i+'_'+qs[i].a).classList.add('sh');document.getElementById('ex'+i).style.display='block';}}
+function chk(i,j){if(ans[i]!==undefined)return;ans[i]=j;var ok=j===qs[i].a;if(ok)cor++;document.getElementById('o'+i+'_'+j).classList.add(ok?'c':'w');if(!ok)document.getElementById('o'+i+'_'+qs[i].a).classList.add('sh');document.getElementById('ex'+i).style.display='block';document.querySelectorAll('#q'+i+' .ob').forEach(function(b){b.style.pointerEvents='none';});document.getElementById('score').textContent=cor+'/'+tot;document.getElementById('pct').textContent=Math.round(cor/tot*100)+'%';localStorage.setItem('test_A4_last',JSON.stringify({s:cor,t:tot,d:new Date().toLocaleDateString()}));}
+function tBk(i){bk[i]=!bk[i];document.querySelector('#q'+i+' .bm').classList.toggle('a');localStorage.setItem('bk_A4',JSON.stringify(bk));}
+function shuffle(){qs=qs.slice().sort(function(){return Math.random()-0.5;});ans={};cor=0;document.getElementById('score').textContent='0/'+tot;document.getElementById('pct').textContent='0%';render(qs);}
+function showBk(){var b=qs.filter(function(q){return bk[qs.indexOf(q)];});if(!b.length){alert('No bookmarks yet!');return;}render(b);}
+var sv=localStorage.getItem('bk_A4');if(sv)bk=JSON.parse(sv);render(qs);
+</script>
+</body>
+</html>
+

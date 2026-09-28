@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test B4 – RBI History, Governors & Rates</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);min-height:100vh;color:#fff;padding:20px}.container{max-width:750px;margin:0 auto}.header{text-align:center;padding:20px;background:rgba(0,0,0,.3);border-radius:16px;margin-bottom:20px;border:1px solid rgba(255,255,255,.1)}.header h1{font-size:1.4em;background:linear-gradient(90deg,#00d2ff,#3a7bd5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.header p{color:#aaa;margin-top:5px;font-size:.9em}.progress-container{background:rgba(255,255,255,.1);border-radius:20px;height:10px;margin:20px 0;overflow:hidden}.progress-bar{height:100%;background:linear-gradient(90deg,#00d2ff,#3a7bd5);border-radius:20px;transition:width .4s}.stats{display:flex;justify-content:space-between;font-size:.85em;color:#ccc;margin-bottom:15px}.card{background:rgba(0,0,0,.25);border-radius:16px;padding:25px;border:1px solid rgba(255,255,255,.1);margin-bottom:20px}.q-num{font-size:.8em;color:#00d2ff;font-weight:700;margin-bottom:8px}.q-text{font-size:1.05em;line-height:1.5;margin-bottom:20px}.option{display:block;width:100%;padding:14px 18px;margin:8px 0;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;font-size:.95em;cursor:pointer;text-align:left;transition:all .2s}.option:hover:not(.disabled){background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}.option.correct{background:rgba(0,200,83,.15);border-color:#00c853;color:#69f0ae}.option.wrong{background:rgba(255,23,68,.15);border-color:#ff1744;color:#ff5252}.option.disabled{cursor:default;opacity:.7}.explanation{margin-top:15px;padding:15px;background:rgba(255,215,0,.08);border-left:3px solid #ffd200;border-radius:0 8px 8px 0;font-size:.9em;color:#ddd;display:none}.btn-row{display:flex;gap:10px;justify-content:center;margin-top:15px}.btn{padding:12px 30px;border:none;border-radius:10px;font-size:.95em;font-weight:600;cursor:pointer}.btn-next{background:linear-gradient(90deg,#00d2ff,#3a7bd5);color:#fff}.result-card{text-align:center;padding:40px}.score-circle{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:20px auto;font-size:2em;font-weight:700}.score-good{background:rgba(0,200,83,.15);border:3px solid #00c853;color:#69f0ae}.score-avg{background:rgba(255,215,0,.15);border:3px solid #ffd200;color:#ffd200}.score-low{background:rgba(255,23,68,.15);border:3px solid #ff1744;color:#ff5252}.result-table{width:100%;margin-top:25px;border-collapse:collapse;font-size:.85em}.result-table th{padding:10px;background:rgba(255,255,255,.1);text-align:left}.result-table td{padding:8px 10px}.review-q{padding:15px;margin:10px 0;border-radius:10px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.1)}.review-q.r-correct{border-left:4px solid #00c853}.review-q.r-wrong{border-left:4px solid #ff1744}.hidden{display:none}.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7em;font-weight:600}.tag-rbi{background:rgba(0,210,255,.2);color:#00d2ff}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header"><h1>🏦 Test B4 – RBI: History, Governors & Rates</h1><p>Set B • Q91–Q120 of 307 • IBPS/SBI/RRB Mains</p><p><span class="tag tag-rbi">BANKING</span></p></div>
+<div id="quiz-area">
+<div class="progress-container"><div class="progress-bar" id="pbar" style="width:0%"></div></div>
+<div class="stats"><span id="qcount">Q 1/30</span><span id="scorecount">Score: 0</span></div>
+<div class="card" id="qcard"></div>
+<div class="btn-row"><button class="btn btn-next hidden" id="nextBtn" onclick="nextQ()">Next →</button></div>
+</div>
+<div id="result-area" class="hidden"></div>
+</div>
+<script>
+const Q=[
+{q:"When was the Reserve Bank of India established?",o:["1 April 1934","1 April 1935","1 January 1949","1 July 1955"],a:1,e:"RBI was established on 1 April 1935 under the RBI Act, 1934."},
+{q:"Where was the RBI originally headquartered?",o:["Delhi","Chennai","Kolkata","Hyderabad"],a:2,e:"RBI was originally HQ in Kolkata before shifting to Mumbai."},
+{q:"RBI was established under which Act?",o:["Banking Regulation Act 1949","RBI Act 1934","FEMA 1999","Companies Act 1956"],a:1,e:"RBI was established under the RBI Act, 1934."},
+{q:"When was the RBI nationalized?",o:["1 April 1935","15 August 1947","1 January 1949","26 January 1950"],a:2,e:"RBI was nationalized on 1 January 1949."},
+{q:"Who was the first Governor of the RBI?",o:["C.D. Deshmukh","James Braid Taylor","Sir Osborne Smith","Benegal Rama Rau"],a:2,e:"Sir Osborne Smith was the first RBI Governor (1935–1937)."},
+{q:"Who was the first Indian Governor of the RBI?",o:["Sir Osborne Smith","Benegal Rama Rau","Sir C.D. Deshmukh","H.V.R. Iengar"],a:2,e:"Sir C.D. Deshmukh was the first Indian RBI Governor (1943–1949)."},
+{q:"Who is the current (26th) Governor of the RBI?",o:["Shaktikanta Das","Urjit Patel","Raghuram Rajan","Sanjay Malhotra"],a:3,e:"Sanjay Malhotra is the 26th RBI Governor."},
+{q:"Which RBI Governor later became the PM of India?",o:["C. Rangarajan","Manmohan Singh","Raghuram Rajan","I.G. Patel"],a:1,e:"Manmohan Singh served as 15th RBI Governor and later became PM."},
+{q:"Who was the longest-serving RBI Governor?",o:["Manmohan Singh","Shaktikanta Das","Benegal Rama Rau","Bimal Jalan"],a:2,e:"Sir Benegal Rama Rau served for over 7 years (1949–1957)."},
+{q:"Who was the shortest-serving RBI Governor (20 days)?",o:["K.G. Ambegaonkar","B.N. Adarkar","Amitav Ghosh","N.C. Sen Gupta"],a:2,e:"Amitav Ghosh served only 20 days in 1985."},
+{q:"When did the RBI central office shift to Mumbai?",o:["1937","1947","1935","1949"],a:0,e:"RBI's central office shifted to Mumbai in 1937."},
+{q:"In India, 'Lender of Last Resort' is:",o:["Reserve Bank of India","Government of India","NABARD","SBI"],a:0,e:"RBI acts as the Lender of Last Resort."},
+{q:"What is the Repo Rate?",o:["Rate RBI borrows from banks","Rate RBI lends to commercial banks","Minimum lending rate","Rate for govt bonds"],a:1,e:"Repo Rate = rate at which RBI lends to commercial banks."},
+{q:"What is the Reverse Repo Rate?",o:["Rate RBI borrows from foreign banks","Rate RBI borrows from commercial banks","Rate commercial banks borrow from RBI","Rate banks borrow from foreign banks"],a:1,e:"Reverse Repo = rate RBI borrows from commercial banks."},
+{q:"The short-term borrowing rate at which RBI borrows from banks is:",o:["Bank rate","Call rate","Repo rate","Reverse Repo Rate"],a:3,e:"Reverse Repo Rate is the short-term rate RBI borrows from banks."},
+{q:"Who fixes the Repo Rate and Reverse Repo Rate?",o:["Ministry of Finance","SBI","CAG of India","Reserve Bank of India"],a:3,e:"The MPC of RBI fixes both rates."},
+{q:"SLR requires banks to maintain deposits in:",o:["Gold/government securities","Cash with RBI","Agriculture loans","Government transfer"],a:0,e:"SLR = deposits maintained in approved securities."},
+{q:"CRR requires banks to keep deposits as:",o:["Gold with RBI","Cash with RBI","Profits to RBI","Priority sector loans"],a:1,e:"CRR = % of deposits kept as cash with RBI."},
+{q:"LAF stands for:",o:["Loan Adjustment Facility","Liquidity Adjustment Facility","Lending Assistance Fund","Long-term Asset Financing"],a:1,e:"LAF = Liquidity Adjustment Facility."},
+{q:"MSF (Marginal Standing Facility) is:",o:["Regular lending window","Emergency overnight borrowing above repo rate","Forex management facility","Farmer scheme"],a:1,e:"MSF = emergency borrowing facility above repo rate."},
+{q:"MCLR replaced which lending rate from April 2016?",o:["Repo Rate","Bank Rate","Base Rate","Prime Lending Rate"],a:2,e:"MCLR replaced the Base Rate system from April 2016."},
+{q:"'M' in MCLR stands for:",o:["Minimum","Maximum","Marginal","Money"],a:2,e:"MCLR = Marginal Cost of Funds Based Lending Rate."},
+{q:"Which bank prints currency notes in India?",o:["RBI","NABARD","SBI","ICICI Bank"],a:0,e:"RBI prints and issues currency notes (except ₹1)."},
+{q:"Who issues the ₹1 coin/note in India?",o:["RBI","SBI","Ministry of Finance","NABARD"],a:2,e:"Ministry of Finance issues the ₹1 note and coin."},
+{q:"If inflation is rising, the Central Bank might:",o:["Decrease repo rate","Increase repo rate","Decrease reverse repo","Keep unchanged"],a:1,e:"To control inflation, RBI increases the repo rate."},
+{q:"What is on the back of the ₹2000 note?",o:["Sun Temple","Mangalyaan","Red Fort","Rani Ki Vav"],a:1,e:"₹2000 note features the Mangalyaan (Mars Orbiter Mission)."},
+{q:"Printing technique for 'RESERVE BANK OF INDIA' on notes:",o:["Intaglio printing","Micro lettering","Latent printing","Screen printing"],a:0,e:"Intaglio printing is used for this text."},
+{q:"Reserve Bank Staff College is in:",o:["Mumbai","New Delhi","Kolkata","Chennai"],a:3,e:"RBSC is located in Chennai."},
+{q:"Foreign exchange reserves provisions are in:",o:["RBI Act 1947","RBI Act 1934","RBI Act 1923","RBI Act 1971"],a:1,e:"RBI Act 1934 governs foreign exchange reserves."},
+{q:"The first bank established in India (1770) was:",o:["Bank of Baroda","SBI","Indian Bank","Bank of Hindustan"],a:3,e:"Bank of Hindustan was the first bank in India (1770)."}
+];
+let ci=0,score=0,answered=[];
+function render(){const q=Q[ci];document.getElementById("pbar").style.width=((ci/Q.length)*100)+"%";document.getElementById("qcount").textContent=`Q ${ci+1}/${Q.length}`;document.getElementById("scorecount").textContent=`Score: ${score}`;let h=`<div class="q-num">Q${ci+1} of ${Q.length}</div><div class="q-text">${q.q}</div>`;q.o.forEach((o,i)=>{h+=`<button class="option" onclick="pick(${i})">${String.fromCharCode(65+i)}) ${o}</button>`;});h+=`<div class="explanation" id="expl">💡 ${q.e}</div>`;document.getElementById("qcard").innerHTML=h;document.getElementById("nextBtn").classList.add("hidden");}
+function pick(i){if(document.querySelector(".option.disabled"))return;const q=Q[ci];document.querySelectorAll(".option").forEach((b,j)=>{b.classList.add("disabled");if(j===q.a)b.classList.add("correct");if(j===i&&i!==q.a)b.classList.add("wrong");});if(i===q.a)score++;answered.push({qi:ci,sel:i,correct:i===q.a});document.getElementById("expl").style.display="block";document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("scorecount").textContent=`Score: ${score}`;}
+function nextQ(){ci++;if(ci>=Q.length){showResult();return;}render();}
+function showResult(){document.getElementById("quiz-area").classList.add("hidden");const pct=Math.round((score/Q.length)*100);let cls=pct>=80?"score-good":pct>=50?"score-avg":"score-low";let grade=pct>=80?"🏆 Expert":pct>=65?"👍 Intermediate":pct>=50?"📘 Beginner":"🔄 Retry";let h=`<div class="card result-card"><h2>Test B4 Complete!</h2><div class="score-circle ${cls}">${pct}%</div><p style="font-size:1.2em">${score}/${Q.length} correct</p><p style="color:#aaa;margin:10px 0">${grade}</p><table class="result-table"><tr><th>Metric</th><th>Value</th></tr><tr><td>✅ Correct</td><td>${score}</td></tr><tr><td>❌ Wrong</td><td>${Q.length-score}</td></tr><tr><td>📊 Accuracy</td><td>${pct}%</td></tr></table></div><h3 style="margin:20px 0 10px">📝 Review</h3>`;answered.forEach((a,i)=>{const q=Q[a.qi];h+=`<div class="review-q ${a.correct?'r-correct':'r-wrong'}"><strong>Q${i+1}.</strong> ${q.q}<br><span style="color:${a.correct?'#69f0ae':'#ff5252'}">You: ${String.fromCharCode(65+a.sel)}) ${q.o[a.sel]}</span>`;if(!a.correct)h+=`<br><span style="color:#69f0ae">✅ ${String.fromCharCode(65+q.a)}) ${q.o[q.a]}</span>`;h+=`<br><small style="color:#aaa">💡 ${q.e}</small></div>`;});h+=`<div class="btn-row" style="margin:30px 0"><button class="btn btn-next" onclick="location.reload()">🔄 Retry</button></div>`;document.getElementById("result-area").innerHTML=h;document.getElementById("result-area").classList.remove("hidden");}
+render();
+</script>
+</body>
+</html>
+
